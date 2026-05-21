@@ -39,7 +39,7 @@ header {
     background: transparent;
     cursor: pointer;
 }
-.navigation-button .fa {
+.navigation-button i {
     border: 2px solid white;
     border-radius: 3px;
     padding: 10px;
@@ -485,7 +485,7 @@ section.events div > h2{
     font-size: 18px;
     display: inline-block;
 }
-.post-content .fa{
+.post-content i{
     padding: 10px 10px;
     cursor: pointer;
 }
