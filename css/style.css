@@ -324,8 +324,8 @@ header {
     overflow-y: auto;
     /* colored accent strip on left edge */
     background-image: linear-gradient(180deg,
-        rgba(33, 150, 243, 0.12) 0%,
-        rgba(33, 150, 243, 0.04) 30%,
+        rgba(29, 78, 216, 0.10) 0%,
+        rgba(29, 78, 216, 0.03) 30%,
         transparent 60%);
 }
 
@@ -357,7 +357,7 @@ header {
 }
 
 .nav-menu-logo .logo-qa {
-    color: var(--color-primary);
+    color: var(--color-accent);
 }
 
 .nav-menu-logo .logo-rest {
@@ -380,9 +380,9 @@ header {
 }
 
 .nav-close-btn:hover {
-    background: rgba(244, 67, 54, 0.2);
-    border-color: rgba(244, 67, 54, 0.4);
-    color: #f44336;
+    background: rgba(124, 29, 18, 0.18);
+    border-color: rgba(124, 29, 18, 0.35);
+    color: var(--color-accent);
     transform: rotate(90deg);
 }
 
@@ -458,7 +458,7 @@ header {
 }
 
 .nav-menu-links ul li a.nav-active {
-    background: rgba(33, 150, 243, 0.12);
+    background: rgba(29, 78, 216, 0.12);
     color: var(--color-primary);
 }
 
@@ -489,8 +489,8 @@ header {
 }
 
 .nav-menu-footer a:hover {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
     color: #fff;
     transform: translateY(-2px);
 }
@@ -506,58 +506,91 @@ header {
     }
 }
 /* ── 7. Hero (Home) ── */
-.hero{
-    width: 80%;
+.hero {
+    width: min(88%, 960px);
     margin: 0 auto;
-}
-.hero h1{
-    margin-top: 178px;
-    text-transform: uppercase;
-    font-family: "Roboto Condensed";
-    font-size: 26px;
-    letter-spacing: 4px;
-    color: white;
+    padding-top: 180px;
+    padding-bottom: 80px;
 }
 
-.hero span{
-    font-size: 65px;
-    letter-spacing: 2px;
-    font-family: "Roboto Condensed";
+.hero h1 {
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    letter-spacing: 0.35em;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.hero span {
+    display: block;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    letter-spacing: -0.01em;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 800;
+    line-height: 1.05;
+    color: #ffffff;
 }
 
 .button {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: normal;
-    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     margin-top: 40px;
 }
-.btn1:hover{
-    text-decoration: none;
-    color: white;
-}
-.btn2:hover{
-    text-decoration: none;
-    color: black;
-}
 
-.btn1{
-    padding: 12px 25px;
+.btn1 {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 28px;
     background: var(--color-accent);
+    color: #ffffff;
     text-decoration: none;
-    color: white;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 12px rgba(124, 29, 18, 0.35);
 }
-.btn2{
-    padding: 12px 25px;
-    background: var(--color-primary);
-    text-decoration: none;
-    color: #fff;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
 
+.btn1:hover {
+    background: #9b2918;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 29, 18, 0.45);
+    text-decoration: none;
+    color: #ffffff;
 }
-nav  {
+
+.btn2 {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 28px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 6px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn2:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.55);
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: #ffffff;
+}
+
+nav {
     height: 60px;
     width: 80%;
     margin: 40px auto 0;
@@ -567,14 +600,20 @@ nav  {
 }
 
 /* ── 8. Timer / Countdown ── */
-.timer{
-    padding: 25px 0;
-    background: var(--color-accent);
+.timer {
+    padding: 40px 0;
+    background: var(--color-dark);
     color: #fff;
     text-align: center;
+    border-top: 3px solid var(--color-accent);
 }
-.timer-title{
-    font-size: 2.5rem;
+.timer-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 8px;
 }
 /* ── 9. About Section ── */
 section.about {
@@ -603,11 +642,11 @@ section.about .awesome p{
     line-height: 1.8;
 }
 section.about .awesome p:nth-of-type(1){
-    color: #444;
+    color: var(--color-text-dark);
 }
 
 section.about .awesome p:nth-of-type(2){
-    color: #888;
+    color: var(--color-text-muted);
 }
 
 section.about .awesome p:nth-of-type(3) a {
@@ -690,28 +729,21 @@ section.events div > h2{
 
 /* Style the buttons inside the tab */
 .tab button {
-  color: #fff;
-  margin-left: 10px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 20px 20px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-.tab div:nth-child(1) > button {
-	background: #3e64ff;
+    color: #fff;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px 20px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    font-size: 17px;
+    border-radius: 6px;
 }
 
-.tab div:nth-child(2) > button {
-	background: #ff00c8;
-}
-.tab div:nth-child(3) > button {
-	background: #28c3d4;
-}
-.tab div:nth-child(4) > button {
-	background: #ffbd39;
-}
+.tab div:nth-child(1) > button { background: var(--color-dark); }
+.tab div:nth-child(2) > button { background: var(--color-accent); }
+.tab div:nth-child(3) > button { background: var(--color-primary); }
+.tab div:nth-child(4) > button { background: #334155; }
 
 .tab div button h2{
 	margin: 0;
@@ -831,7 +863,14 @@ section.events div > h2{
 }
  .post-wrapper{
     background: var(--color-surface);
-    box-shadow: 0px 30px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.post-wrapper:hover {
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+    transform: translateY(-3px);
 }
  .post-img{
     position: relative;
@@ -908,9 +947,9 @@ section.events div > h2{
 }
 .post-content a:hover{
     font-size: 14px;
-    border: 1px solid red;
+    border: 1px solid var(--color-accent);
     text-decoration: none;
-    border-top-right-radius: 20px;
+    border-radius: 4px;
     background: transparent;
     color: var(--color-accent);
 }
@@ -937,18 +976,25 @@ section.events div > h2{
 }
 
 /* ── 14. Footer ── */
-.footer{
+.footer {
     background: var(--color-dark);
-    padding: 40px 0;
-    color: #f2f2f2;
-    font-size: 12px;
+    padding: 56px 0 40px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    line-height: 1.7;
+    border-top: 3px solid var(--color-accent);
 }
-.footer a{
-    color: #f2f2f2;
+.footer a {
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
+    transition: color 0.18s ease;
 }
-.footer h2{
-    font-size: 1.9rem;
+.footer a:hover {
+    color: #ffffff;
+}
+.footer h2 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
 }
 .footer .qa-title {
     color: var(--color-primary);
