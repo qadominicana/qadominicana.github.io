@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Primera comunidad oficial de profesionales de SQA en República Dominicana. Eventos, recursos y oportunidades en Quality Assurance.">
-    <title>QA Dominicana — Comunidad de Profesionales SQA</title>
+    <meta name="description" content="Conoce a la primera comunidad oficial de profesionales de SQA en República Dominicana.">
+    <title>Acerca — QA Dominicana</title>
     <link rel="shortcut icon" href="favicon.ico">
-    <link rel="preload" as="image" href="assets/slide/evento-charla-primeros-pasos-pruebas.jpg" fetchpriority="high">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,69 +51,60 @@
     </div>
 </div>
 
-<header class="header">
-    <div class="slideshow" aria-hidden="true">
-        <div class="slide" style="background-image:url('assets/slide/evento-charla-primeros-pasos-pruebas.jpg')"></div>
-        <div class="slide" style="background-image:url('assets/slide/evento-introduccion-katalon.jpg')"></div>
-        <div class="slide" style="background-image:url('assets/slide/evento-workshop-selenium.jpg')"></div>
-    </div>
-
-    <div class="container" id="headerCont">
-        <div class="wrapper-nav" id="wrapperNav">
-            <nav id="nav" aria-label="Navegación principal">
-                <div id="logo">QA Dominicana</div>
-                <div class="navigation-wrapper">
-                    <button class="lang-toggle" aria-label="Switch to English">
-                        <span class="lang-option" data-lang="es">ES</span>
-                        <span class="lang-option" data-lang="en">EN</span>
-                    </button>
-                    <button class="theme-toggle" aria-label="Cambiar a modo oscuro">
-                        <i class="fas fa-moon" aria-hidden="true"></i>
-                    </button>
-                    <button class="navigation-button" type="button" data-i18n-aria="nav.open" aria-label="Abrir menú" aria-expanded="false" aria-controls="navigation-menu">
-                        <span class="hamburger-bar"></span>
-                        <span class="hamburger-bar"></span>
-                        <span class="hamburger-bar"></span>
-                    </button>
-                </div>
-            </nav>
-        </div>
-
-        <section class="hero">
-            <h1><span data-i18n="home.hero.line1">Calidad y Prueba</span><br><span data-i18n="home.hero.line2">de Software</span></h1>
-            <div class="button">
-                <a href="acerca.html" class="btn1" data-i18n="home.btn1">Conócenos</a>
-                <a href="eventos.html" class="btn2" data-i18n="home.btn2">Eventos</a>
+<header class="page-header">
+    <div class="wrapper-nav nav-sticky" id="wrapperNav">
+        <nav id="nav" aria-label="Navegación principal">
+            <a href="index.html" id="logo">QA Dominicana</a>
+            <div class="navigation-wrapper">
+                <button class="lang-toggle" aria-label="Switch to English">
+                    <span class="lang-option" data-lang="es">ES</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+                <button class="theme-toggle" aria-label="Cambiar a modo oscuro">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="navigation-button" type="button" data-i18n-aria="nav.open" aria-label="Abrir menú" aria-expanded="false" aria-controls="navigation-menu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
             </div>
-        </section>
+        </nav>
+    </div>
+    <div class="page-title-bar">
+        <h1 data-i18n="about.header">Acerca de Nosotros</h1>
+        <p data-i18n="about.sub">Conoce quiénes somos</p>
     </div>
 </header>
 
 <main id="main-content">
-<section class="timer">
+<section class="about">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-                <h2 class="timer-title" data-i18n="home.timer">Próximo evento: Automatización con Katalon Studio.</h2>
+            <div class="col-md-4">
+                <div class="awesome">
+                    <h2 data-i18n="about.title">Acerca de Nosotros</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid excepturi fugiat minus molestiae nostrum porro quibusdam quod sit velit voluptatem.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis cum dolore exercitationem expedita in iusto natus repudiandae ut voluptas.</p>
+                    <p><a href="#" class="db-btn btn-color"><span data-i18n="about.readmore">Leer Más</span></a></p>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <h2 class="timer-title" id="dias"></h2>
-                        <span data-i18n="home.days">días</span>
+            <div class="col-md-4">
+                <div class="creative">
+                    <div>
+                        <img class="img-fluid" src="assets/about/creativos.jpg" alt="Miembros creativos de QA Dominicana" width="3000" height="2000" loading="lazy">
                     </div>
-                    <div class="col-sm-3">
-                        <h2 class="timer-title" id="horas"></h2>
-                        <span data-i18n="home.hours">horas</span>
+                    <h2 data-i18n="about.creative">Creativos</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dignissimos est fugiat iste laboriosam nobis, nostrum reiciendis repellendus veniam veritatis!</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="office">
+                    <div>
+                        <img class="img-fluid" src="assets/about/services.jpg" alt="Servicios de QA Dominicana" width="4000" height="2666" loading="lazy">
                     </div>
-                    <div class="col-sm-3">
-                        <h2 class="timer-title" id="minutos"></h2>
-                        <span data-i18n="home.minutes">minutos</span>
-                    </div>
-                    <div class="col-sm-3">
-                        <h2 class="timer-title" id="segundos"></h2>
-                        <span data-i18n="home.seconds">segundos</span>
-                    </div>
+                    <h2 data-i18n="about.services">Servicios</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dignissimos est fugiat iste laboriosam nobis, nostrum reiciendis repellendus veniam veritatis!</p>
                 </div>
             </div>
         </div>
