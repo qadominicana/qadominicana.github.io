@@ -3,18 +3,18 @@
 /* ── Light (default) ── */
 :root,
 [data-theme="light"] {
-    --color-primary:    #2196F3;
-    --color-accent:     #f44336;
-    --color-dark:       #262626;
+    --color-primary:    #1d4ed8;  /* Royal Blue — logo A + DOMINICANA */
+    --color-accent:     #7c1d12;  /* Wine Red — logo Q */
+    --color-dark:       #0f172a;  /* Navy — headers, footer */
 
     --color-bg:         #ffffff;
-    --color-bg-light:   #f2f2f2;
+    --color-bg-light:   #f8fafc;
     --color-surface:    #ffffff;
-    --color-surface-2:  #f7f8fa;
+    --color-surface-2:  #f1f5f9;
 
-    --color-text:       #1a1a2e;
-    --color-text-dark:  #444444;
-    --color-text-muted: #63707e;
+    --color-text:       #0f172a;
+    --color-text-dark:  #334155;
+    --color-text-muted: #64748b;
 
     --color-border:     rgba(0, 0, 0, 0.08);
     --color-border-subtle: rgba(0, 0, 0, 0.05);
