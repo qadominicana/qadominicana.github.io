@@ -1,0 +1,61 @@
+/* QA Dominicana — Design Tokens */
+
+/* ── Light (default) ── */
+:root,
+[data-theme="light"] {
+    --color-primary:    #2196F3;
+    --color-accent:     #f44336;
+    --color-dark:       #262626;
+
+    --color-bg:         #ffffff;
+    --color-bg-light:   #f2f2f2;
+    --color-surface:    #ffffff;
+    --color-surface-2:  #f7f8fa;
+
+    --color-text:       #1a1a2e;
+    --color-text-dark:  #444444;
+    --color-text-muted: #63707e;
+
+    --color-border:     rgba(0, 0, 0, 0.08);
+    --color-border-subtle: rgba(0, 0, 0, 0.05);
+
+    --font-main: 'Roboto Condensed', sans-serif;
+
+    color-scheme: light;
+}
+
+/* ── Dark ── */
+[data-theme="dark"] {
+    --color-bg:         #0d1117;
+    --color-bg-light:   #161b22;
+    --color-surface:    #1c2128;
+    --color-surface-2:  #21262d;
+
+    --color-text:       #e6edf3;
+    --color-text-dark:  #c9d1d9;
+    --color-text-muted: #8b949e;
+
+    --color-border:     rgba(255, 255, 255, 0.08);
+    --color-border-subtle: rgba(255, 255, 255, 0.04);
+
+    color-scheme: dark;
+}
+
+/* ── System fallback (no stored preference) ── */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --color-bg:         #0d1117;
+        --color-bg-light:   #161b22;
+        --color-surface:    #1c2128;
+        --color-surface-2:  #21262d;
+
+        --color-text:       #e6edf3;
+        --color-text-dark:  #c9d1d9;
+        --color-text-muted: #8b949e;
+
+        --color-border:     rgba(255, 255, 255, 0.08);
+        --color-border-subtle: rgba(255, 255, 255, 0.04);
+
+        color-scheme: dark;
+    }
+}

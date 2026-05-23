@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx.cmd *)",
+      "PowerShell(npx -y modern-web-guidance@latest search \"lazy loading images performance\" --skill-version 2026_05_16-c5e7870 2>&1)",
+      "PowerShell(npx -y modern-web-guidance@latest search \"accessibility ARIA semantic HTML\" --skill-version 2026_05_16-c5e7870 2>&1)",
+      "PowerShell(npx -y modern-web-guidance@latest search \"CSS animations scroll motion modern\" --skill-version 2026_05_16-c5e7870 2>&1)",
+      "Bash(start *)",
+      "Bash(dir /s /b)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\jorge\\\\Projects\\\\qadominicana.github.io\\\\images\\\\bg.jpeg\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\jorge\\\\Projects\\\\qadominicana.github.io\\\\images\\\\profiles\\\\perfil.jpg\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\jorge\\\\Projects\\\\qadominicana.github.io\\\\images\\\\profiles\\\\profile-1.jpg\" -ErrorAction SilentlyContinue)",
+      "Bash(Write-Host \"Deleted 3 dead assets\")"
+    ]
+  }
+}

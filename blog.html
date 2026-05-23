@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Primera comunidad oficial de profesionales de SQA en República Dominicana. Eventos, recursos y oportunidades en Quality Assurance.">
-    <title>QA Dominicana — Comunidad de Profesionales SQA</title>
+    <meta name="description" content="Artículos y recursos sobre Quality Assurance publicados por la comunidad QA Dominicana.">
+    <title>Blog — QA Dominicana</title>
     <link rel="shortcut icon" href="favicon.ico">
-    <link rel="preload" as="image" href="assets/slide/evento-charla-primeros-pasos-pruebas.jpg" fetchpriority="high">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,68 +51,102 @@
     </div>
 </div>
 
-<header class="header">
-    <div class="slideshow" aria-hidden="true">
-        <div class="slide" style="background-image:url('assets/slide/evento-charla-primeros-pasos-pruebas.jpg')"></div>
-        <div class="slide" style="background-image:url('assets/slide/evento-introduccion-katalon.jpg')"></div>
-        <div class="slide" style="background-image:url('assets/slide/evento-workshop-selenium.jpg')"></div>
-    </div>
-
-    <div class="container" id="headerCont">
-        <div class="wrapper-nav" id="wrapperNav">
-            <nav id="nav" aria-label="Navegación principal">
-                <div id="logo">QA Dominicana</div>
-                <div class="navigation-wrapper">
-                    <button class="lang-toggle" aria-label="Switch to English">
-                        <span class="lang-option" data-lang="es">ES</span>
-                        <span class="lang-option" data-lang="en">EN</span>
-                    </button>
-                    <button class="theme-toggle" aria-label="Cambiar a modo oscuro">
-                        <i class="fas fa-moon" aria-hidden="true"></i>
-                    </button>
-                    <button class="navigation-button" type="button" data-i18n-aria="nav.open" aria-label="Abrir menú" aria-expanded="false" aria-controls="navigation-menu">
-                        <span class="hamburger-bar"></span>
-                        <span class="hamburger-bar"></span>
-                        <span class="hamburger-bar"></span>
-                    </button>
-                </div>
-            </nav>
-        </div>
-
-        <section class="hero">
-            <h1><span data-i18n="home.hero.line1">Calidad y Prueba</span><br><span data-i18n="home.hero.line2">de Software</span></h1>
-            <div class="button">
-                <a href="acerca.html" class="btn1" data-i18n="home.btn1">Conócenos</a>
-                <a href="eventos.html" class="btn2" data-i18n="home.btn2">Eventos</a>
+<header class="page-header">
+    <div class="wrapper-nav nav-sticky" id="wrapperNav">
+        <nav id="nav" aria-label="Navegación principal">
+            <a href="index.html" id="logo">QA Dominicana</a>
+            <div class="navigation-wrapper">
+                <button class="lang-toggle" aria-label="Switch to English">
+                    <span class="lang-option" data-lang="es">ES</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+                <button class="theme-toggle" aria-label="Cambiar a modo oscuro">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="navigation-button" type="button" data-i18n-aria="nav.open" aria-label="Abrir menú" aria-expanded="false" aria-controls="navigation-menu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
             </div>
-        </section>
+        </nav>
+    </div>
+    <div class="page-title-bar">
+        <h1 data-i18n="blog.header">Blog</h1>
+        <p data-i18n="blog.sub">Artículos y recursos de QA</p>
     </div>
 </header>
 
 <main id="main-content">
-<section class="timer">
+<section class="blog">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-                <h2 class="timer-title" data-i18n="home.timer">Próximo evento: Automatización con Katalon Studio.</h2>
+            <div class="col-md-12">
+                <div class="section_title">
+                    <div class="section_subtitle" data-i18n="blog.section">Blog</div>
+                    <h2><span data-i18n="blog.latest">Último</span> <strong data-i18n="blog.posts">Posts</strong></h2>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <h2 class="timer-title" id="dias"></h2>
-                        <span data-i18n="home.days">días</span>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="post-wrapper">
+                    <div class="post-img">
+                        <img class="img-fluid" src="assets/events/evento-1.jpg" alt="Post del blog QA Dominicana" width="2500" height="1669" loading="lazy">
+                        <div class="post-date">
+                            <span>10</span>
+                            <span>Jun</span>
+                        </div>
                     </div>
-                    <div class="col-sm-3">
-                        <h2 class="timer-title" id="horas"></h2>
-                        <span data-i18n="home.hours">horas</span>
+                    <div class="post-content">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-youtube"></i>
+                        <i class="fab fa-whatsapp"></i>
+                        <p>The demand for delivering quality software faster — or "Quality at Speed" — requires organizations to search for solutions in Agile, continuous integration (CI) and DevOps methodologies.</p>
+                        <a href="#" data-i18n="blog.readmore">Leer Más</a>
                     </div>
-                    <div class="col-sm-3">
-                        <h2 class="timer-title" id="minutos"></h2>
-                        <span data-i18n="home.minutes">minutos</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="post-wrapper">
+                    <div class="post-img">
+                        <img class="img-fluid" src="assets/events/evento-2.jpg" alt="Post del blog QA Dominicana" width="4000" height="2612" loading="lazy">
+                        <div class="post-date">
+                            <span>25</span>
+                            <span>Jul</span>
+                        </div>
                     </div>
-                    <div class="col-sm-3">
-                        <h2 class="timer-title" id="segundos"></h2>
-                        <span data-i18n="home.seconds">segundos</span>
+                    <div class="post-content">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-youtube"></i>
+                        <i class="fab fa-whatsapp"></i>
+                        <p>The demand for delivering quality software faster — or "Quality at Speed" — requires organizations to search for solutions in Agile, continuous integration (CI) and DevOps methodologies.</p>
+                        <a href="#" data-i18n="blog.readmore">Leer Más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="post-wrapper">
+                    <div class="post-img">
+                        <img class="img-fluid" src="assets/events/evento-3.jpg" alt="Post del blog QA Dominicana" width="3468" height="2967" loading="lazy">
+                        <div class="post-date">
+                            <span>19</span>
+                            <span>Ago</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-youtube"></i>
+                        <i class="fab fa-whatsapp"></i>
+                        <p>The demand for delivering quality software faster — or "Quality at Speed" — requires organizations to search for solutions in Agile, continuous integration (CI) and DevOps methodologies.</p>
+                        <a href="#" data-i18n="blog.readmore">Leer Más</a>
                     </div>
                 </div>
             </div>
