@@ -53,7 +53,7 @@
 html, body {
     font-family: var(--font-main), sans-serif;
     font-weight: bold;
-    min-height: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -707,7 +707,7 @@ section.about .office img:hover{
 
 
 /* ── Página Eventos — fondo global ── */
-body.pg-eventos {
+html:has(body.pg-eventos) {
     min-height: 100vh;
     background-color: #0a0010;
     background-image: url('../assets/bg-eventos.png');
@@ -715,6 +715,11 @@ body.pg-eventos {
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+body.pg-eventos {
+    min-height: 100vh;
+    background: transparent;
 }
 
 body.pg-eventos .page-header {
