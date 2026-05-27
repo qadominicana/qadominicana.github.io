@@ -709,17 +709,17 @@ section.about .office img:hover{
 /* ── Página Eventos — fondo global ── */
 html:has(body.pg-eventos) {
     min-height: 100vh;
-    background: #0a0010;
-}
-
-body.pg-eventos {
-    min-height: 100vh;
     background-color: #0a0010;
     background-image: url('../assets/bg-eventos.png');
     background-attachment: fixed;
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+body.pg-eventos {
+    min-height: 100vh;
+    background: transparent;
 }
 
 body.pg-eventos .page-header {
