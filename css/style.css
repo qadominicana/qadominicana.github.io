@@ -53,7 +53,7 @@
 html, body {
     font-family: var(--font-main), sans-serif;
     font-weight: bold;
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -706,89 +706,212 @@ section.about .office img:hover{
 }
 
 
-/* ── 10. Events & Tabs ── */
-section.events {
-    padding: 75px 0 20px;
-	background: var(--color-bg-light);
-    height: 850px;
+/* ── Página Eventos — fondo global ── */
+body.pg-eventos {
+    min-height: 100vh;
+    background-color: #0a0010;
+    background-image: url('../assets/bg-eventos.png');
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-section.events div > h2{
+body.pg-eventos .page-header {
+    background: transparent;
+}
+
+/* ── 10. Events & Tabs ── */
+section.events {
+    padding: 0 0 60px;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+section.events::before,
+section.events::after {
+    content: none;
+}
+
+section.events > .container {
+    position: relative;
+    z-index: 1;
+}
+
+section.events > .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+section.events div > h2 {
     font-size: 2.5rem;
     font-weight: bold;
-	text-align: center;
-	padding-bottom: 5%;
-    color: var(--color-primary);
+    text-align: center;
+    padding-bottom: 5%;
+    color: #fff;
     text-transform: uppercase;
 }
+
 /* Style the tab */
 .tab {
-  overflow: hidden;
- 
+    overflow: visible;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+/* Columnas del tab en flex para que el botón se estire */
+.tab .col-md-4 {
+    display: flex;
+    margin-bottom: 16px;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
     color: #fff;
-    margin-left: 10px;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     outline: none;
     cursor: pointer;
-    padding: 20px 20px;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    padding: 28px 20px;
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
     font-size: 17px;
-    border-radius: 6px;
+    border-radius: 12px;
+    font-weight: bold;
+    background: rgba(29, 78, 216, 0.22);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
-.tab div:nth-child(1) > button { background: var(--color-dark); }
-.tab div:nth-child(2) > button { background: var(--color-accent); }
-.tab div:nth-child(3) > button { background: var(--color-primary); }
-.tab div:nth-child(4) > button { background: #334155; }
-
-.tab div button h2{
-	margin: 0;
+.tab div button h2 {
+    margin: 0;
     padding: 0;
-    font-size: 2.5rem;
-}
-.tab div button p{
-	margin: 8px 0 0 0;
-    padding: 0;
-    font-size: 14px;
+    font-size: 1.55rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
-/* Change background color of buttons on hover */
+.tab div button p {
+    margin: 6px 0 0 0;
+    padding: 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.event-pending {
+    display: block;
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255, 210, 100, 0.85);
+    letter-spacing: 0.02em;
+}
+
+.tab-notice {
+    margin: 8px 0 12px;
+    padding: 10px 14px;
+    background: rgba(255, 200, 60, 0.1);
+    border-left: 3px solid rgba(255, 200, 60, 0.6);
+    border-radius: 0 8px 8px 0;
+    color: rgba(255, 220, 100, 0.9);
+    font-size: 0.85rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.tab-notice i {
+    margin-right: 6px;
+    color: rgba(255, 200, 60, 0.8);
+}
+
 .tab button:hover {
-  opacity: 0.8;
+    background: rgba(29, 78, 216, 0.38);
+    border-color: rgba(29, 78, 216, 0.6);
+    transform: translateY(-2px);
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 16px rgba(29, 78, 216, 0.4);
 }
 
 /* Style the tab content */
 .tabcontent {
-  display: none;
-  margin-top: 5%;
-    padding-left: 2%;
+    display: none;
+    margin-top: 32px;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
-#evento1{
+
+.tabcontent .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.tabcontent h2 {
+    color: #fff;
+    text-align: left !important;
+    padding-bottom: 0 !important;
+    font-size: 1.75rem !important;
+}
+
+.tabcontent .col-md-6 img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 320px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+#evento1 {
     display: block;
 }
-.tab-title{
-     padding-left: 7%;
- }
+
+.tab-title {
+    padding-left: 7%;
+    color: rgba(255, 255, 255, 0.75);
+}
 
 .tab-title i {
     padding-right: 1%;
     color: var(--color-primary);
 }
+
 .tab-text {
     padding-left: 7%;
     text-align: justify;
     padding-top: 3%;
     font-weight: 400;
     line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 
@@ -1025,14 +1148,15 @@ section.events div > h2{
 /* ── 15. Inner Page Headers ── */
 .page-header {
     background: var(--color-dark);
+    height: auto;
 }
 
 .page-header .wrapper-nav.nav-sticky {
     position: sticky;
     top: 0;
     background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
     z-index: 1000;
