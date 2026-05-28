@@ -47,30 +47,58 @@ document.addEventListener('keydown', function (e) {
 
 // Countdown timer — only on pages that have the timer elements
 if (document.querySelector('#dias')) {
-    const countDownDate = new Date('Dec 31, 2026 18:00:00').getTime();
+    const EVENTOS = [
+        { fecha: new Date('2026-06-13T18:00:00'), nombre: 'Monthly Talk — 13 de Junio' },
+        { fecha: new Date('2026-07-11T18:00:00'), nombre: 'Testing 4 All — 11 de Julio' },
+        { fecha: new Date('2026-08-08T18:00:00'), nombre: 'Monthly Talk — 8 de Agosto' },
+        { fecha: new Date('2026-09-12T18:00:00'), nombre: 'Monthly Talk — 12 de Septiembre' },
+        { fecha: new Date('2026-10-10T18:00:00'), nombre: 'Monthly Talk — 10 de Octubre' },
+        { fecha: new Date('2026-11-14T18:00:00'), nombre: 'Monthly Talk — 14 de Noviembre' },
+        { fecha: new Date('2026-12-12T18:00:00'), nombre: 'Monthly Talk — 12 de Diciembre' },
+    ];
 
-    const x = setInterval(function () {
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
+    const titleEl  = document.querySelector('#timer-event-name');
+    const diasEl   = document.querySelector('#dias');
+    const horasEl  = document.querySelector('#horas');
+    const minEl    = document.querySelector('#minutos');
+    const segEl    = document.querySelector('#segundos');
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let intervalo = null;
 
-        document.querySelector('#dias').textContent = days;
-        document.querySelector('#horas').textContent = hours;
-        document.querySelector('#minutos').textContent = minutes;
-        document.querySelector('#segundos').textContent = seconds;
+    function proximoEvento() {
+        return EVENTOS.find(function (e) { return e.fecha.getTime() > Date.now(); }) || null;
+    }
 
-        if (distance < 0) {
-            clearInterval(x);
-            document.querySelector('#dias').textContent = '0';
-            document.querySelector('#horas').textContent = '0';
-            document.querySelector('#minutos').textContent = '0';
-            document.querySelector('#segundos').textContent = '0';
+    function iniciarContador() {
+        if (intervalo) clearInterval(intervalo);
+
+        const evento = proximoEvento();
+
+        if (!evento) {
+            if (titleEl) titleEl.textContent = '¡Hasta el próximo año!';
+            diasEl.textContent = horasEl.textContent = minEl.textContent = segEl.textContent = '0';
+            return;
         }
-    }, 1000);
+
+        if (titleEl) titleEl.textContent = 'Próximo evento: ' + evento.nombre;
+
+        intervalo = setInterval(function () {
+            const distancia = evento.fecha.getTime() - Date.now();
+
+            if (distancia <= 0) {
+                clearInterval(intervalo);
+                iniciarContador();
+                return;
+            }
+
+            diasEl.textContent  = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            horasEl.textContent = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            minEl.textContent   = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            segEl.textContent   = Math.floor((distancia % (1000 * 60)) / 1000);
+        }, 1000);
+    }
+
+    iniciarContador();
 }
 
 // Sticky nav on scroll
