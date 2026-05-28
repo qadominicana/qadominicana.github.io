@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Artículos y recursos sobre Quality Assurance publicados por la comunidad QA Dominicana.">
-    <title>Blog — QA Dominicana</title>
+    <meta name="description" content="Detalles del evento de QA Dominicana — agenda, ponente y cómo confirmar asistencia.">
+    <title>Detalle del evento — QA Dominicana</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -71,88 +71,134 @@
             </div>
         </nav>
     </div>
-    <div class="page-title-bar">
-        <h1 data-i18n="blog.header">Blog</h1>
-        <p data-i18n="blog.sub">Artículos y recursos de QA</p>
-    </div>
 </header>
 
 <main id="main-content">
-<section class="blog">
+
+<section class="event-hero">
+    <div class="event-hero-image" aria-hidden="true">
+        <img src="assets/events/evento-1.jpg" alt="">
+    </div>
+    <div class="container event-hero-content">
+        <a href="eventos.html" class="event-hero-back" data-i18n="detail.back"><i class="fas fa-arrow-left" aria-hidden="true"></i> Volver a eventos</a>
+        <span class="event-hero-date">31 AGO 2019</span>
+        <h1 data-i18n="detail.title">Introducción a Katalon Studio</h1>
+        <p class="event-hero-meta">
+            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Universidad INTEC · Aula 05</span>
+            <span><i class="fas fa-user" aria-hidden="true"></i>Carlos Pineda</span>
+            <span><i class="fas fa-clock" aria-hidden="true"></i>9:00 AM – 1:00 PM</span>
+        </p>
+        <a href="confirmar_asistencia.html?evento=1" class="btn-event btn-confirm" data-i18n="events.confirm">Confirmar asistencia</a>
+    </div>
+</section>
+
+<section class="event-detail">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section_title">
-                    <div class="section_subtitle" data-i18n="blog.section">Blog</div>
-                    <h2><span data-i18n="blog.latest">Último</span> <strong data-i18n="blog.posts">Posts</strong></h2>
-                </div>
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <h2 class="event-section-title" data-i18n="detail.about.title">Acerca del evento</h2>
+                <p class="event-section-text" data-i18n="detail.about.desc">Taller práctico de iniciación a la automatización de pruebas funcionales con Katalon Studio. Aprenderás a instalar la herramienta, configurar tu primer proyecto y crear casos de prueba automatizados sin necesidad de programar desde cero.</p>
+                <p class="event-section-text" data-i18n="detail.about.desc2">Está diseñado para testers manuales, estudiantes de ingeniería y profesionales que quieren dar el salto a la automatización con una herramienta accesible y robusta. No se requiere experiencia previa en automatización.</p>
+
+                <h2 class="event-section-title" data-i18n="detail.agenda.title">Agenda</h2>
+                <ul class="agenda-list">
+                    <li class="agenda-item">
+                        <span class="agenda-time">09:00</span>
+                        <span class="agenda-topic" data-i18n="detail.agenda.i1">Registro y bienvenida</span>
+                    </li>
+                    <li class="agenda-item">
+                        <span class="agenda-time">09:30</span>
+                        <span class="agenda-topic" data-i18n="detail.agenda.i2">Introducción a Katalon Studio y su ecosistema</span>
+                    </li>
+                    <li class="agenda-item">
+                        <span class="agenda-time">10:30</span>
+                        <span class="agenda-topic" data-i18n="detail.agenda.i3">Coffee break y networking</span>
+                    </li>
+                    <li class="agenda-item">
+                        <span class="agenda-time">11:00</span>
+                        <span class="agenda-topic" data-i18n="detail.agenda.i4">Instalación y configuración del entorno</span>
+                    </li>
+                    <li class="agenda-item">
+                        <span class="agenda-time">12:00</span>
+                        <span class="agenda-topic" data-i18n="detail.agenda.i5">Creación de tu primer caso de prueba</span>
+                    </li>
+                    <li class="agenda-item">
+                        <span class="agenda-time">13:00</span>
+                        <span class="agenda-topic" data-i18n="detail.agenda.i6">Cierre, dudas y networking</span>
+                    </li>
+                </ul>
+
+                <h2 class="event-section-title" data-i18n="detail.speaker.title">Ponente</h2>
+                <article class="speaker-card">
+                    <div class="speaker-card-img">
+                        <img src="assets/profiles/carlos-pineda.jpg" alt="Carlos Pineda" loading="lazy">
+                    </div>
+                    <div class="speaker-card-body">
+                        <h3 class="speaker-card-name">Carlos Pineda</h3>
+                        <p class="speaker-card-role" data-i18n="detail.speaker.role">Testing Coordinator en Evertec · Co-fundador de QA Dominicana</p>
+                        <p class="speaker-card-bio" data-i18n="detail.speaker.bio">Más de diez años liderando equipos de aseguramiento de la calidad en el sector financiero. Apasionado por la automatización y la formación de nuevos testers en República Dominicana.</p>
+                    </div>
+                </article>
             </div>
-        </div>
-        <br><br>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="post-wrapper">
-                    <div class="post-img">
-                        <img class="img-fluid" src="assets/events/evento-1.jpg" alt="Post del blog QA Dominicana" width="2500" height="1669" loading="lazy">
-                        <div class="post-date">
-                            <span>10</span>
-                            <span>Jun</span>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-linkedin"></i>
-                        <i class="fab fa-youtube"></i>
-                        <i class="fab fa-whatsapp"></i>
-                        <p>The demand for delivering quality software faster — or "Quality at Speed" — requires organizations to search for solutions in Agile, continuous integration (CI) and DevOps methodologies.</p>
-                        <a href="#" data-i18n="blog.readmore">Leer Más</a>
-                    </div>
+
+            <aside class="col-lg-4">
+                <div class="info-card">
+                    <h3 class="info-card-title" data-i18n="detail.info.title">Detalles del evento</h3>
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label" data-i18n="detail.info.date">Fecha</span>
+                                <span class="info-value">31 de Agosto, 2019</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label" data-i18n="detail.info.time">Hora</span>
+                                <span class="info-value">9:00 AM – 1:00 PM</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label" data-i18n="detail.info.place">Lugar</span>
+                                <span class="info-value">Universidad INTEC · Aula 05</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-ticket-alt" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label" data-i18n="detail.info.mode">Modalidad</span>
+                                <span class="info-value" data-i18n="detail.info.mode.value">Presencial · Gratuito</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label" data-i18n="detail.info.seats">Cupos</span>
+                                <span class="info-value" data-i18n="detail.info.seats.value">40 plazas limitadas</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="confirmar_asistencia.html?evento=1" class="btn-event btn-confirm info-card-cta" data-i18n="events.confirm">Confirmar asistencia</a>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="post-wrapper">
-                    <div class="post-img">
-                        <img class="img-fluid" src="assets/events/evento-2.jpg" alt="Post del blog QA Dominicana" width="4000" height="2612" loading="lazy">
-                        <div class="post-date">
-                            <span>25</span>
-                            <span>Jul</span>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-linkedin"></i>
-                        <i class="fab fa-youtube"></i>
-                        <i class="fab fa-whatsapp"></i>
-                        <p>The demand for delivering quality software faster — or "Quality at Speed" — requires organizations to search for solutions in Agile, continuous integration (CI) and DevOps methodologies.</p>
-                        <a href="#" data-i18n="blog.readmore">Leer Más</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="post-wrapper">
-                    <div class="post-img">
-                        <img class="img-fluid" src="assets/events/evento-3.jpg" alt="Post del blog QA Dominicana" width="3468" height="2967" loading="lazy">
-                        <div class="post-date">
-                            <span>19</span>
-                            <span>Ago</span>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <i class="fab fa-facebook"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-linkedin"></i>
-                        <i class="fab fa-youtube"></i>
-                        <i class="fab fa-whatsapp"></i>
-                        <p>The demand for delivering quality software faster — or "Quality at Speed" — requires organizations to search for solutions in Agile, continuous integration (CI) and DevOps methodologies.</p>
-                        <a href="#" data-i18n="blog.readmore">Leer Más</a>
-                    </div>
-                </div>
-            </div>
+            </aside>
         </div>
     </div>
 </section>
+
+<section class="event-cta">
+    <div class="container">
+        <h2 data-i18n="detail.cta.title">¿Listo para sumarte?</h2>
+        <p data-i18n="detail.cta.desc">Aparta tu cupo antes de que se agoten las plazas. La comunidad QA Dominicana te espera.</p>
+        <div class="event-cta-actions">
+            <a href="confirmar_asistencia.html?evento=1" class="btn-event btn-confirm" data-i18n="events.confirm">Confirmar asistencia</a>
+            <a href="eventos.html" class="btn-event btn-details" data-i18n="detail.back.short">Ver más eventos</a>
+        </div>
+    </div>
+</section>
+
 </main>
 
 <footer class="footer">
