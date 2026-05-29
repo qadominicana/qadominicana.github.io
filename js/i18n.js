@@ -108,6 +108,9 @@ const translations = {
         'contact.email':   'Tu correo electrónico',
         'contact.message': 'Mensaje aquí',
         'contact.send':    'Enviar mensaje',
+        'contact.success': '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.',
+        'contact.error':   'Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.',
+        'footer.success':  '¡Gracias por suscribirte!',
     },
     en: {
         // Navigation
@@ -217,6 +220,9 @@ const translations = {
         'contact.email':   'Your email address',
         'contact.message': 'Message here',
         'contact.send':    'Send message',
+        'contact.success': 'Message sent successfully! We will get in touch soon.',
+        'contact.error':   'There was an error sending the message. Please try again.',
+        'footer.success':  'Thanks for subscribing!',
     }
 };
 

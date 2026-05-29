@@ -42,8 +42,8 @@
 | Tabs de eventos          | ✅ Funcional    | 4 pestañas con contenido tab                           |
 | Swiper staff             | ✅ Funcional    | Coverflow 3D con paginación                            |
 | Blog cards               | ✅ Funcional    | Hover effects con overlay                              |
-| Formulario contacto      | 🔴 Sin backend | Solo UI, no envía datos                                |
-| Newsletter               | 🔴 Sin backend | Solo UI, no envía datos                                |
+| Formulario contacto      | ✅ Funcional    | Integrado con FormSubmit (AJAX) + confirmación         |
+| Newsletter               | ✅ Funcional    | Integrado con FormSubmit (AJAX) + confirmación         |
 | Skip link (a11y)         | ✅ Funcional    | Accesibilidad con enlace de salto                      |
 | Responsive design        | ✅ Funcional    | Bootstrap grid + clamp() para fuentes                  |
 | SEO meta tags            | ✅ Implementado | Title + description en cada página                     |
@@ -51,6 +51,18 @@
 ---
 
 ## Historial de Cambios
+
+### 📌 2026-05-28 — Integración de Formularios con Backend (FormSubmit)
+- **Tipo:** Funcionalidad
+- **Acción:** Se activaron los formularios de contacto y suscripción.
+- **Archivos modificados:**
+  - `contacto.html`: Implementación de FormSubmit en el formulario principal.
+  - `index.html`, `acerca.html`, `eventos.html`, `staff.html`, `blog.html`, `confirmar_asistencia.html`, `detalle.html`: Actualización del footer (newsletter).
+  - `js/main.js`: Lógica AJAX para envío de formularios y visualización de mensajes.
+  - `js/i18n.js`: Nuevas claves de traducción para mensajes de éxito y error.
+- **Observaciones:**
+  - Se utiliza `https://formsubmit.co/ajax/qadominican@gmail.com`.
+  - Se añadió protección anti-spam básica (`_honey`) y se desactivó el captcha para mejorar la UX con AJAX.
 
 ### 📌 2026-05-26 — Análisis Inicial y Documentación
 - **Tipo:** Documentación
