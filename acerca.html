@@ -52,9 +52,18 @@
 </div>
 
 <header class="page-header">
+    <div class="slideshow" aria-hidden="true">
+        <div class="slide" style="background-image:url('assets/slide/evento-charla-primeros-pasos-pruebas.jpg')"></div>
+        <div class="slide" style="background-image:url('assets/slide/evento-introduccion-katalon.jpg')"></div>
+        <div class="slide" style="background-image:url('assets/slide/evento-workshop-selenium.jpg')"></div>
+        <div class="slide" style="background-image:url('assets/events/evento-1.jpg')"></div>
+        <div class="slide" style="background-image:url('assets/events/evento-4.jpg')"></div>
+    </div>
+
     <div class="wrapper-nav nav-sticky" id="wrapperNav">
         <nav id="nav" aria-label="Navegación principal">
-            <a href="index.html" id="logo"><img src="assets/logos/logoClaro.PNG" alt="QA Dominicana" class="site-logo"></a>
+            <!-- LOGO NAVBAR QA Dominicana -->
+            <a href="index.html" id="logo"><img src="assets/logos/QA_Dominicana_Logo.png" alt="QA Dominicana" height="60"> </a>
             <div class="navigation-wrapper">
                 <button class="lang-toggle" aria-label="Switch to English">
                     <span class="lang-option" data-lang="es">ES</span>
@@ -73,8 +82,15 @@
     </div>
     <div class="page-title-bar">
         <h1 data-i18n="about.header">Acerca de Nosotros</h1>
-        <p data-i18n="about.sub">Conoce quiénes somos</p>
+        <div class="slide-captions">
+            <p class="slide-caption" data-i18n="about.caption1">Compartimos lo que aprendemos en cada encuentro de la comunidad.</p>
+            <p class="slide-caption" data-i18n="about.caption2">Talleres prácticos de las herramientas que usamos día a día.</p>
+            <p class="slide-caption" data-i18n="about.caption3">Aprendemos haciendo, con casos reales del sector.</p>
+            <p class="slide-caption" data-i18n="about.caption4">Conectamos talento QA desde Santo Domingo hasta Santiago.</p>
+            <p class="slide-caption" data-i18n="about.caption5">Más de cinco años impulsando la calidad del software dominicano.</p>
+        </div>
     </div>
+    
 </header>
 
 <main id="main-content">
@@ -83,28 +99,96 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="awesome">
-                    <h2 data-i18n="about.title">Acerca de Nosotros</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid excepturi fugiat minus molestiae nostrum porro quibusdam quod sit velit voluptatem.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis cum dolore exercitationem expedita in iusto natus repudiandae ut voluptas.</p>
-                    <p><a href="#" class="db-btn btn-color"><span data-i18n="about.readmore">Leer Más</span></a></p>
+                    <h2 data-i18n="about.title">Quiénes Somos</h2>
+                    <p data-i18n="about.description1">QA Dominicana es la primera comunidad oficial de profesionales del aseguramiento de la calidad del software en República Dominicana. Nacimos en 2019 con la misión de impulsar el ecosistema del testing en el país.</p>
+                    <p data-i18n="about.description2">Hoy somos una red activa de cientos de profesionales que se reúnen en meetups, talleres y conferencias para compartir conocimiento, oportunidades y crecer juntos.</p>
+                    <p><a href="https://www.facebook.com/groups/2300640940204721/" target="_blank" rel="noopener" class="db-btn btn-color"><span data-i18n="about.readmore">Únete a la comunidad</span></a></p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="creative">
                     <div>
-                        <img class="img-fluid" src="assets/about/creativos.jpg" alt="Miembros creativos de QA Dominicana" width="3000" height="2000" loading="lazy">
+                        <img class="img-fluid" src="assets/about/creativos.jpg" alt="Miembros de la comunidad QA Dominicana" width="3000" height="2000" loading="lazy">
                     </div>
-                    <h2 data-i18n="about.creative">Creativos</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dignissimos est fugiat iste laboriosam nobis, nostrum reiciendis repellendus veniam veritatis!</p>
+                    <h2 data-i18n="about.creative">Comunidad</h2>
+                    <p data-i18n="about.creative.desc">Una red abierta de testers, automatizadores, líderes de QA y estudiantes que comparten experiencias, mentorías y oportunidades. Todos los niveles son bienvenidos.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="office">
                     <div>
-                        <img class="img-fluid" src="assets/about/services.jpg" alt="Servicios de QA Dominicana" width="4000" height="2666" loading="lazy">
+                        <img class="img-fluid" src="assets/about/services.jpg" alt="Talleres y servicios de QA Dominicana" width="4000" height="2666" loading="lazy">
                     </div>
-                    <h2 data-i18n="about.services">Servicios</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dignissimos est fugiat iste laboriosam nobis, nostrum reiciendis repellendus veniam veritatis!</p>
+                    <h2 data-i18n="about.services">Lo que hacemos</h2>
+                    <p data-i18n="about.services.desc">Organizamos charlas técnicas, talleres de herramientas como Selenium, Katalon y Cypress, y difundimos vacantes para impulsar la carrera de cada miembro.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="story">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <img class="story-img" src="assets/events/evento-2.jpg" alt="La comunidad QA Dominicana reunida en un evento" width="4000" height="2612" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <div class="story-text">
+                    <h2 data-i18n="about.history.title">Nuestra Historia</h2>
+                    <p data-i18n="about.history.desc">QA Dominicana nació en 2019, cuando un grupo de testers identificó la falta de un espacio dedicado al aseguramiento de la calidad del software en el país. Lo que comenzó como meetups informales se convirtió en la primera comunidad oficial de SQA de República Dominicana, que hoy reúne a cientos de profesionales de todo el territorio nacional.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4 story-cards">
+            <div class="col-md-6">
+                <div class="story-card">
+                    <i class="fas fa-bullseye" aria-hidden="true"></i>
+                    <h3 data-i18n="about.mission.title">Misión</h3>
+                    <p data-i18n="about.mission.desc">Fortalecer el ecosistema del testing en República Dominicana mediante formación, networking y oportunidades que eleven el nivel profesional de cada miembro de la comunidad.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="story-card">
+                    <i class="fas fa-compass" aria-hidden="true"></i>
+                    <h3 data-i18n="about.purpose.title">Propósito</h3>
+                    <p data-i18n="about.purpose.desc">Crear un espacio inclusivo donde los profesionales del QA compartan conocimiento, impulsen las mejores prácticas y hagan crecer la cultura de calidad del software en el país.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="values">
+    <div class="container">
+        <h2 data-i18n="about.values.title">Nuestros Pilares</h2>
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="value-card">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    <h3 data-i18n="about.values.learning.title">Aprendizaje</h3>
+                    <p data-i18n="about.values.learning.desc">Promovemos el aprendizaje continuo a través de talleres, charlas y mentorías.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="value-card">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <h3 data-i18n="about.values.community.title">Comunidad</h3>
+                    <p data-i18n="about.values.community.desc">Construimos una red inclusiva donde cada profesional de QA tiene voz y espacio para crecer.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="value-card">
+                    <i class="fas fa-award" aria-hidden="true"></i>
+                    <h3 data-i18n="about.values.quality.title">Calidad</h3>
+                    <p data-i18n="about.values.quality.desc">Defendemos las mejores prácticas y elevamos el estándar del testing en el país.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="value-card">
+                    <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                    <h3 data-i18n="about.values.innovation.title">Innovación</h3>
+                    <p data-i18n="about.values.innovation.desc">Exploramos herramientas y metodologías modernas para mantenernos a la vanguardia.</p>
                 </div>
             </div>
         </div>
@@ -143,10 +227,14 @@
             </div>
             <div class="col-md-4">
                 <div class="newsletter">
-                    <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
-                    <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="newsletter" id="newsletter">
-                    <br>
-                    <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
+                    <form class="newsletter-form" action="https://formsubmit.co/ajax/qadominican@gmail.com" method="POST">
+                        <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
+                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="email" id="newsletter" required>
+                        <br>
+                        <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
+                    </form>
                 </div>
             </div>
         </div>

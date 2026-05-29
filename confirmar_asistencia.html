@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confirma tu asistencia al próximo evento de QA Dominicana.">
+    <title>Confirmar asistencia — QA Dominicana</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>!function(){var t=localStorage.getItem('qa-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}();</script>
+</head>
+<body>
+<a class="skip-link" href="#main-content" data-i18n="skip">Saltar al contenido principal</a>
+
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+<div class="navigation-menu" id="navigation-menu" inert>
+    <div class="nav-menu-header">
+        <span class="nav-menu-logo"><span class="logo-qa">QA</span><span class="logo-rest"> Dominicana</span></span>
+        <button class="lang-toggle" aria-label="Switch to English">
+            <span class="lang-option" data-lang="es">ES</span>
+            <span class="lang-option" data-lang="en">EN</span>
+        </button>
+        <button class="theme-toggle" aria-label="Cambiar a modo oscuro">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+        <button class="nav-close-btn" type="button" data-i18n-aria="nav.close" aria-label="Cerrar menú">
+            <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+    <nav class="nav-menu-links">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home" aria-hidden="true"></i><span data-i18n="nav.home">Inicio</span></a></li>
+            <li><a href="acerca.html"><i class="fas fa-users" aria-hidden="true"></i><span data-i18n="nav.about">Acerca</span></a></li>
+            <li><a href="eventos.html"><i class="fas fa-calendar-alt" aria-hidden="true"></i><span data-i18n="nav.events">Eventos</span></a></li>
+            <li><a href="staff.html"><i class="fas fa-id-badge" aria-hidden="true"></i><span data-i18n="nav.staff">Staff</span></a></li>
+            <li><a href="blog.html"><i class="fas fa-pen-nib" aria-hidden="true"></i><span data-i18n="nav.blog">Blog</span></a></li>
+            <li><a href="contacto.html"><i class="fas fa-envelope" aria-hidden="true"></i><span data-i18n="nav.contact">Contacto</span></a></li>
+        </ul>
+    </nav>
+    <div class="nav-menu-footer">
+        <a href="https://www.facebook.com/groups/2300640940204721/" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/qa_dominicana/" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/channel/UC6f2mFVJtUjjuGAx5jeV4jA" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+    </div>
+</div>
+
+<header class="page-header">
+    <div class="wrapper-nav nav-sticky" id="wrapperNav">
+        <nav id="nav" aria-label="Navegación principal">
+            <a href="index.html" id="logo"><img src="assets/logos/QA_Dominicana_Logo.png" alt="QA Dominicana" height="60"></a>
+            <div class="navigation-wrapper">
+                <button class="lang-toggle" aria-label="Switch to English">
+                    <span class="lang-option" data-lang="es">ES</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+                <button class="theme-toggle" aria-label="Cambiar a modo oscuro">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button class="navigation-button" type="button" data-i18n-aria="nav.open" aria-label="Abrir menú" aria-expanded="false" aria-controls="navigation-menu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content">
+
+<section class="confirm-intro">
+    <div class="container">
+        <a href="eventos.html" class="event-hero-back"><i class="fas fa-arrow-left" aria-hidden="true"></i> Volver a eventos</a>
+        <span class="event-hero-date">QA Dominicana</span>
+        <h1>Confirmar asistencia</h1>
+        <p class="confirm-intro-sub">Aparta tu cupo en el próximo evento de la comunidad. Completa el formulario y te enviaremos los detalles a tu correo.</p>
+    </div>
+</section>
+
+<section class="confirm-form-section">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-7">
+                <form class="confirm-form" id="confirm-form" novalidate>
+                    <h2 class="event-section-title">Tus datos</h2>
+
+                    <div class="form-row">
+                        <label for="nombre">Nombre completo <span class="required">*</span></label>
+                        <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="email">Correo electrónico <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-row">
+                            <label for="telefono">Teléfono (opcional)</label>
+                            <input type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="(809) 000 0000">
+                        </div>
+                        <div class="form-row">
+                            <label for="empresa">Empresa / Institución</label>
+                            <input type="text" id="empresa" name="empresa" autocomplete="organization">
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-row">
+                            <label for="nivel">Nivel de experiencia</label>
+                            <select id="nivel" name="nivel">
+                                <option value="estudiante">Estudiante</option>
+                                <option value="junior">Junior / QA Manual</option>
+                                <option value="mid" selected>Mid-level / QA Automation</option>
+                                <option value="senior">Senior</option>
+                                <option value="lead">Lead / Manager</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="primero">¿Primer evento con nosotros?</label>
+                            <select id="primero" name="primero">
+                                <option value="si">Sí, es mi primera vez</option>
+                                <option value="no" selected>No, ya he asistido antes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h2 class="event-section-title">Evento</h2>
+
+                    <div class="form-row">
+                        <label for="evento">Selecciona el evento <span class="required">*</span></label>
+                        <select id="evento" name="evento" required>
+                            <option value="1">31 Ago 2019 — Introducción a Katalon Studio</option>
+                            <option value="2">20 Sep 2019 — Selenium WebDriver desde cero</option>
+                            <option value="3">15 Oct 2019 — API Testing con Postman</option>
+                            <option value="4">26 Nov 2019 — Cypress para testing moderno</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="comentarios">Comentarios o preguntas (opcional)</label>
+                        <textarea id="comentarios" name="comentarios" rows="4" placeholder="¿Hay algo que el ponente deba saber? ¿Alguna pregunta previa?"></textarea>
+                    </div>
+
+                    <label class="form-check">
+                        <input type="checkbox" id="newsletter" name="newsletter" checked>
+                        <span>Quiero recibir noticias de futuros eventos de QA Dominicana.</span>
+                    </label>
+
+                    <label class="form-check">
+                        <input type="checkbox" id="terminos" name="terminos" required>
+                        <span>Acepto que mis datos se usen para gestionar mi asistencia al evento. <span class="required">*</span></span>
+                    </label>
+
+                    <button type="submit" class="btn-event btn-confirm form-submit">
+                        <i class="fas fa-check" aria-hidden="true"></i> Confirmar mi asistencia
+                    </button>
+
+                    <div class="confirm-success" id="confirm-success" role="status" hidden>
+                        <i class="fas fa-circle-check" aria-hidden="true"></i>
+                        <div>
+                            <strong>¡Cupo apartado!</strong>
+                            <span>Te enviamos un correo de confirmación con los detalles del evento.</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <aside class="col-lg-5">
+                <div class="info-card" id="event-summary">
+                    <h3 class="info-card-title">Evento seleccionado</h3>
+                    <h4 class="summary-title" id="summary-title">Introducción a Katalon Studio</h4>
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label">Fecha</span>
+                                <span class="info-value" id="summary-date">31 de Agosto, 2019</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label">Hora</span>
+                                <span class="info-value" id="summary-time">9:00 AM – 1:00 PM</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label">Lugar</span>
+                                <span class="info-value" id="summary-place">Universidad INTEC · Aula 05</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label">Ponente</span>
+                                <span class="info-value" id="summary-speaker">Carlos Pineda</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-ticket-alt" aria-hidden="true"></i>
+                            <div>
+                                <span class="info-label">Modalidad</span>
+                                <span class="info-value">Presencial · Gratuito</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-card next-steps">
+                    <h3 class="info-card-title">Qué sigue</h3>
+                    <ol class="steps-list">
+                        <li><span class="step-num">1</span><span>Recibirás un correo de confirmación inmediato.</span></li>
+                        <li><span class="step-num">2</span><span>Un día antes te enviaremos un recordatorio con la ubicación exacta.</span></li>
+                        <li><span class="step-num">3</span><span>El día del evento solo necesitas presentarte con tu nombre.</span></li>
+                    </ol>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2 class="qa-title"><span>QA</span> Dominicana</h2>
+                <p class="qa-content" data-i18n="footer.tagline">Primera comunidad oficial de profesionales de SQA en República Dominicana.</p>
+                <div class="qa-info">
+                    <span><i class="fas fa-phone"></i> <i>(829) 387 2609</i></span>
+                    <span><i class="fas fa-envelope"></i> <i>qadominican@gmail.com</i></span>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/groups/2300640940204721/" aria-label="Facebook de QA Dominicana" target="_blank" rel="noopener"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/qa_dominicana/" aria-label="Instagram de QA Dominicana" target="_blank" rel="noopener"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/channel/UC6f2mFVJtUjjuGAx5jeV4jA" aria-label="YouTube de QA Dominicana" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="links-quick">
+                    <h2 data-i18n="footer.links">Enlaces Rápidos</h2>
+                    <ul>
+                        <li><a href="index.html" data-i18n="nav.home">Inicio</a></li>
+                        <li><a href="acerca.html" data-i18n="nav.about">Acerca</a></li>
+                        <li><a href="eventos.html" data-i18n="nav.events">Eventos</a></li>
+                        <li><a href="staff.html" data-i18n="nav.staff">Staff</a></li>
+                        <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+                        <li><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="newsletter">
+                    <form class="newsletter-form" action="https://formsubmit.co/ajax/qadominican@gmail.com" method="POST">
+                        <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
+                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="email" id="newsletter" required>
+                        <br>
+                        <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function () {
+    const events = {
+        '1': { title: 'Introducción a Katalon Studio', date: '31 de Agosto, 2019', time: '9:00 AM – 1:00 PM', place: 'Universidad INTEC · Aula 05', speaker: 'Carlos Pineda' },
+        '2': { title: 'Selenium WebDriver desde cero',  date: '20 de Septiembre, 2019', time: '9:00 AM – 1:00 PM', place: 'Universidad INTEC · Aula 05', speaker: 'Alexander Vegazo' },
+        '3': { title: 'API Testing con Postman',        date: '15 de Octubre, 2019',    time: '9:00 AM – 1:00 PM', place: 'Universidad INTEC · Aula 05', speaker: 'Ever Curiel' },
+        '4': { title: 'Cypress para testing moderno',   date: '26 de Noviembre, 2019',  time: '9:00 AM – 1:00 PM', place: 'Universidad INTEC · Aula 05', speaker: 'Edgar Ceballos' }
+    };
+
+    const select = document.getElementById('evento');
+    const summaryTitle = document.getElementById('summary-title');
+    const summaryDate = document.getElementById('summary-date');
+    const summaryTime = document.getElementById('summary-time');
+    const summaryPlace = document.getElementById('summary-place');
+    const summarySpeaker = document.getElementById('summary-speaker');
+
+    function updateSummary(id) {
+        const ev = events[id];
+        if (!ev) return;
+        summaryTitle.textContent = ev.title;
+        summaryDate.textContent = ev.date;
+        summaryTime.textContent = ev.time;
+        summaryPlace.textContent = ev.place;
+        summarySpeaker.textContent = ev.speaker;
+    }
+
+    // Pre-select from query param ?evento=N
+    const params = new URLSearchParams(location.search);
+    const initial = params.get('evento');
+    if (initial && events[initial]) {
+        select.value = initial;
+        updateSummary(initial);
+    }
+
+    select.addEventListener('change', function () {
+        updateSummary(select.value);
+    });
+
+    // Submit handling (no backend) — show confirmation
+    const form = document.getElementById('confirm-form');
+    const success = document.getElementById('confirm-success');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+        success.hidden = false;
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        form.querySelector('.form-submit').disabled = true;
+    });
+}());
+</script>
+</body>
+</html>
