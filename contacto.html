@@ -81,7 +81,9 @@
 <section class="contact">
     <div class="container">
         <h2 class="contact-title" data-i18n="contact.title">Escríbenos, queremos conocerte</h2>
-        <form>
+        <form class="contact-form" action="https://formsubmit.co/ajax/qadominican@gmail.com" method="POST">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
             <div class="row g-3">
                 <div class="col-md-6">
                     <label for="nombre" class="visually-hidden" data-i18n="contact.name">Tu nombre</label>
@@ -139,10 +141,14 @@
             </div>
             <div class="col-md-4">
                 <div class="newsletter">
-                    <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
-                    <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="newsletter" id="newsletter">
-                    <br>
-                    <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
+                    <form class="newsletter-form" action="https://formsubmit.co/ajax/qadominican@gmail.com" method="POST">
+                        <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
+                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="email" id="newsletter" required>
+                        <br>
+                        <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
+                    </form>
                 </div>
             </div>
         </div>
