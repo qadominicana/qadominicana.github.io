@@ -130,7 +130,7 @@ if (document.querySelector('.tablinks')) {
         document.querySelectorAll('.tablinks').forEach(function (el) {
             el.classList.remove('active');
         });
-        document.getElementById(tabName).style.display = 'block';
+        document.getElementById(tabName).style.display = 'flex';
         evt.currentTarget.classList.add('active');
     }
 }

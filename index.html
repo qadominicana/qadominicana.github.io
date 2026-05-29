@@ -23,7 +23,12 @@
 <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 <div class="navigation-menu" id="navigation-menu" inert>
     <div class="nav-menu-header">
-        <span class="nav-menu-logo"><span class="logo-qa">QA</span><span class="logo-rest"> Dominicana</span></span>
+
+        <!-- LOGO MENÚ LATERAL -->
+        <span class="nav-menu-logo">
+            <img src="assets/logos/logoClaro.PNG" alt="QA Dominicana" class="site-logo">
+        </span>
+
         <button class="lang-toggle" aria-label="Switch to English">
             <span class="lang-option" data-lang="es">ES</span>
             <span class="lang-option" data-lang="en">EN</span>
@@ -35,14 +40,15 @@
             <i class="fas fa-times" aria-hidden="true"></i>
         </button>
     </div>
-    <nav class="nav-menu-links">
-        <ul>
-            <li><a href="index.html"><i class="fas fa-home" aria-hidden="true"></i><span data-i18n="nav.home">Inicio</span></a></li>
-            <li><a href="acerca.html"><i class="fas fa-users" aria-hidden="true"></i><span data-i18n="nav.about">Acerca</span></a></li>
-            <li><a href="eventos.html"><i class="fas fa-calendar-alt" aria-hidden="true"></i><span data-i18n="nav.events">Eventos</span></a></li>
-            <li><a href="staff.html"><i class="fas fa-id-badge" aria-hidden="true"></i><span data-i18n="nav.staff">Staff</span></a></li>
-            <li><a href="blog.html"><i class="fas fa-pen-nib" aria-hidden="true"></i><span data-i18n="nav.blog">Blog</span></a></li>
-            <li><a href="contacto.html"><i class="fas fa-envelope" aria-hidden="true"></i><span data-i18n="nav.contact">Contacto</span></a></li>
+    <nav class="nav-menu-links" aria-label="Menú lateral">
+
+        <ul class="nav-menu-list" style="list-style:none;padding:0 1rem;margin:0;">
+            <li style="margin:0.5rem 0;"><a href="index.html" data-i18n="nav.home">Inicio</a></li>
+            <li style="margin:0.5rem 0;"><a href="acerca.html" data-i18n="nav.about">Acerca</a></li>
+            <li style="margin:0.5rem 0;"><a href="eventos.html" data-i18n="nav.events">Eventos</a></li>
+            <li style="margin:0.5rem 0;"><a href="staff.html" data-i18n="nav.staff">Staff</a></li>
+            <li style="margin:0.5rem 0;"><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+            <li style="margin:0.5rem 0;"><a href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
         </ul>
     </nav>
     <div class="nav-menu-footer">
@@ -51,7 +57,56 @@
         <a href="https://www.youtube.com/channel/UC6f2mFVJtUjjuGAx5jeV4jA" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i></a>
     </div>
 </div>
+<!-- Control para ajustar el tamaño del logo -->
+<div class="logo-size-control" aria-hidden="false" style="position:fixed;right:1rem;bottom:1rem;z-index:9999;background:rgba(255,255,255,0.95);border:1px solid #ddd;padding:0.6rem 0.8rem;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.08);font-family:inherit">
+    <label for="logoSize" style="font-size:0.85rem;margin-bottom:0.25rem;display:block;color:#333">Tamaño del logo: <span id="logoSizeValue">100</span>px</label>
+    <input id="logoSize" type="range" min="40" max="300" step="1" style="width:180px">
+</div>
 
+<script>
+(function(){
+    const storageKey = 'qa-logo-size';
+    const input = document.getElementById('logoSize');
+    const valueLabel = document.getElementById('logoSizeValue');
+
+    // Selecciona todos los logos por atributo alt (coincide con tus imágenes)
+    function getLogoImages() {
+        return Array.from(document.querySelectorAll('img[alt="QA Dominicana"]'));
+    }
+
+    // Aplica tamaño (altura) a los logos
+    function applySize(px) {
+        getLogoImages().forEach(img => {
+            img.style.height = px + 'px';
+            img.style.width  = 'auto';
+        });
+        valueLabel.textContent = px;
+    }
+
+    // Inicializa control con valor guardado o con un valor por defecto
+    function init() {
+        const saved = parseInt(localStorage.getItem(storageKey), 10);
+        const defaultSize = saved || 100;
+        input.value = defaultSize;
+        applySize(defaultSize);
+    }
+
+    // Espera a que esté el DOM cargado porque los logos están en el HTML
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    // Evento de cambio para actualizar en vivo y guardar
+    input.addEventListener('input', function() {
+        const val = parseInt(this.value, 10);
+        applySize(val);
+        localStorage.setItem(storageKey, val);
+    });
+
+})();
+</script>
 <header class="header">
     <div class="slideshow" aria-hidden="true">
         <div class="slide" style="background-image:url('assets/slide/evento-charla-primeros-pasos-pruebas.jpg')"></div>
@@ -62,7 +117,12 @@
     <div class="container" id="headerCont">
         <div class="wrapper-nav" id="wrapperNav">
             <nav id="nav" aria-label="Navegación principal">
-                <div id="logo">QA Dominicana</div>
+
+                <!-- LOGO NAVBAR -->
+                <div id="logo">
+                    <img src="assets/logos/logoClaro.PNG" alt="QA Dominicana" class="site-logo">
+                </div>
+
                 <div class="navigation-wrapper">
                     <button class="lang-toggle" aria-label="Switch to English">
                         <span class="lang-option" data-lang="es">ES</span>
@@ -81,12 +141,17 @@
         </div>
 
         <section class="hero">
-            <h1><span data-i18n="home.hero.line1">Calidad y Prueba</span><br><span data-i18n="home.hero.line2">de Software</span></h1>
+            <p class="hero-eyebrow" data-i18n="home.hero.eyebrow">Dominican Republic</p>
+            <h1>
+                <span data-i18n="home.hero.line1">QA Domicana The most active community in the country.</span>
+            </h1>
+            <p class="hero-sub" data-i18n="home.hero.sub">We learn, share, and grow together in the world of software quality assurance.</p>
             <div class="button">
-                <a href="acerca.html" class="btn1" data-i18n="home.btn1">Conócenos</a>
-                <a href="eventos.html" class="btn2" data-i18n="home.btn2">Eventos</a>
+                <a class="btn1" data-i18n="home.btn1" href="/acerca">About Us</a>
+                <a class="btn2" data-i18n="home.btn2" href="/eventos">Events</a>
             </div>
         </section>
+
     </div>
 </header>
 
@@ -126,7 +191,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h2 class="qa-title"><span>QA</span> Dominicana</h2>
+
+                <!-- LOGO FOOTER -->
+                <img src="assets/logos/logoClaro.PNG" alt="QA Dominicana" class="site-logo">
+
                 <p class="qa-content" data-i18n="footer.tagline">Primera comunidad oficial de profesionales de SQA en República Dominicana.</p>
                 <div class="qa-info">
                     <span><i class="fas fa-phone"></i> <i>(829) 387 2609</i></span>
@@ -153,10 +221,14 @@
             </div>
             <div class="col-md-4">
                 <div class="newsletter">
-                    <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
-                    <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="newsletter" id="newsletter">
-                    <br>
-                    <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
+                    <form class="newsletter-form" action="https://formsubmit.co/ajax/qadominican@gmail.com" method="POST">
+                        <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
+                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="email" id="newsletter" required>
+                        <br>
+                        <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
+                    </form>
                 </div>
             </div>
         </div>
