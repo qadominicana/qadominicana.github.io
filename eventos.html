@@ -22,7 +22,7 @@
 <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 <div class="navigation-menu" id="navigation-menu" inert>
     <div class="nav-menu-header">
-        <span class="nav-menu-logo"><span class="logo-qa">QA</span><span class="logo-rest"> Dominicana</span></span>
+        <span class="nav-menu-logo"><img src="assets/logos/logoClaro.PNG" alt="QA Dominicana" class="site-logo"></span>
         <button class="lang-toggle" aria-label="Switch to English">
             <span class="lang-option" data-lang="es">ES</span>
             <span class="lang-option" data-lang="en">EN</span>
@@ -54,7 +54,7 @@
 <header class="page-header">
     <div class="wrapper-nav nav-sticky" id="wrapperNav">
         <nav id="nav" aria-label="Navegación principal">
-            <a href="index.html" id="logo"><img src="assets/logos/QA_Dominicana_Logo.png" alt="QA Dominicana" height="60"></a>
+            <a href="index.html" id="logo"><img src="assets/logos/logoClaro.PNG" alt="QA Dominicana" class="site-logo"></a>
             <div class="navigation-wrapper">
                 <button class="lang-toggle" aria-label="Switch to English">
                     <span class="lang-option" data-lang="es">ES</span>
@@ -71,107 +71,174 @@
             </div>
         </nav>
     </div>
+    <div class="page-title-bar">
+        <h1 data-i18n="events.header">Nuestros Eventos</h1>
+        <p data-i18n="events.sub">Talleres, charlas y conferencias</p>
+    </div>
 </header>
 
 <main id="main-content">
 <section class="events">
     <div class="container">
-        <div class="section-intro">
-            <h2 data-i18n="events.header">Nuestros Eventos</h2>
-            <p data-i18n="events.sub">Talleres, meetups y conferencias donde la comunidad QA dominicana comparte conocimiento, herramientas y experiencias del día a día en el aseguramiento de la calidad del software.</p>
+        <div class="tab row">
+            <div class="col-md-4">
+                <button class="tablinks" type="button" data-tab="evento1">
+                    <h2>13 de Junio, 2026</h2>
+                    <p>Monthly Talk: Charlas y networking sobre QA.</p>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="tablinks" type="button" data-tab="evento2">
+                    <h2>11 de Julio, 2026</h2>
+                    <p>Testing 4 All: Evento especial de la comunidad.</p>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="tablinks" type="button" data-tab="evento3">
+                    <h2>Agosto, 2026</h2>
+                    <p>Monthly Talk &nbsp;·&nbsp; 8 ó 22 de Agosto</p>
+                    <span class="event-pending">Este evento está pautado para una de estas fechas. Más información próximamente.</span>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="tablinks" type="button" data-tab="evento4">
+                    <h2>Septiembre, 2026</h2>
+                    <p>Monthly Talk &nbsp;·&nbsp; 12 ó 26 de Septiembre</p>
+                    <span class="event-pending">Este evento está pautado para una de estas fechas. Más información próximamente.</span>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="tablinks" type="button" data-tab="evento5">
+                    <h2>Octubre, 2026</h2>
+                    <p>Monthly Talk &nbsp;·&nbsp; 10 ó 24 de Octubre</p>
+                    <span class="event-pending">Este evento está pautado para una de estas fechas. Más información próximamente.</span>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="tablinks" type="button" data-tab="evento6">
+                    <h2>Noviembre, 2026</h2>
+                    <p>Monthly Talk &nbsp;·&nbsp; 14 ó 28 de Noviembre</p>
+                    <span class="event-pending">Este evento está pautado para una de estas fechas. Más información próximamente.</span>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="tablinks" type="button" data-tab="evento7">
+                    <h2>Diciembre, 2026</h2>
+                    <p>Monthly Talk &nbsp;·&nbsp; 12 ó 26 de Diciembre</p>
+                    <span class="event-pending">Este evento está pautado para una de estas fechas. Más información próximamente.</span>
+                </button>
+            </div>
         </div>
-        <div class="row g-4">
-            <div class="col-lg-3 col-md-6">
-                <article class="event-card">
-                    <div class="event-card-img">
-                        <span class="event-card-date">
-                            <span class="day">31</span>
-                            <span class="month">AGO 2019</span>
-                        </span>
-                        <img src="assets/events/evento-1.jpg" alt="Taller de Katalon Studio" loading="lazy">
-                        <div class="event-card-overlay">
-                            <a href="detalle.html?evento=1" class="btn-event btn-details" data-i18n="events.details">Ver detalles</a>
-                            <a href="confirmar_asistencia.html?evento=1" class="btn-event btn-confirm" data-i18n="events.confirm">Confirmar asistencia</a>
-                        </div>
+        <div class="row">
+            <div id="evento1" class="tabcontent col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="assets/events/evento-1.jpg" alt="Monthly Talk Junio" width="2500" height="1669" loading="lazy">
                     </div>
-                    <div class="event-card-body">
-                        <h2 class="event-card-title" data-i18n="events.e1.title">Introducción a Katalon Studio</h2>
-                        <p class="event-card-meta">
-                            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Universidad INTEC</span>
-                            <span><i class="fas fa-user" aria-hidden="true"></i>Carlos Pineda</span>
+                    <div class="col-md-6">
+                        <h2>Monthly Talk — 13 de Junio, 2026</h2>
+                        <p class="tab-title">
+                            <i class="fas fa-calendar"></i>13 Junio, 2026
+                            <i class="fas fa-map-marker-alt"></i>Universidad APEC
                         </p>
-                        <p class="event-card-desc" data-i18n="events.e1.desc">Taller práctico para iniciarte en la automatización de pruebas funcionales con Katalon Studio.</p>
+                        <p class="tab-text">Charlas y networking sobre QA. ¡Únete a nuestra comunidad para aprender y compartir!</p>
                     </div>
-                </article>
+                </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <article class="event-card">
-                    <div class="event-card-img">
-                        <span class="event-card-date">
-                            <span class="day">20</span>
-                            <span class="month">SEP 2019</span>
-                        </span>
-                        <img src="assets/events/evento-2.jpg" alt="Workshop de Selenium WebDriver" loading="lazy">
-                        <div class="event-card-overlay">
-                            <a href="detalle.html?evento=2" class="btn-event btn-details" data-i18n="events.details">Ver detalles</a>
-                            <a href="confirmar_asistencia.html?evento=2" class="btn-event btn-confirm" data-i18n="events.confirm">Confirmar asistencia</a>
-                        </div>
+            <div id="evento2" class="tabcontent col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="assets/events/evento-2.jpg" alt="Testing 4 All Julio" width="4000" height="2612" loading="lazy">
                     </div>
-                    <div class="event-card-body">
-                        <h2 class="event-card-title" data-i18n="events.e2.title">Selenium WebDriver desde cero</h2>
-                        <p class="event-card-meta">
-                            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Universidad INTEC</span>
-                            <span><i class="fas fa-user" aria-hidden="true"></i>Alexander Vegazo</span>
+                    <div class="col-md-6">
+                        <h2>Testing 4 All — 11 de Julio, 2026</h2>
+                        <p class="tab-title">
+                            <i class="fas fa-calendar"></i>11 Julio, 2026
+                            <i class="fas fa-map-marker-alt"></i>Universidad APEC
                         </p>
-                        <p class="event-card-desc" data-i18n="events.e2.desc">Construye tu primer test automatizado de UI y descubre las buenas prácticas con Selenium WebDriver.</p>
+                        <p class="tab-text">Evento especial de la comunidad: Testing 4 All. ¡No te lo pierdas!</p>
                     </div>
-                </article>
+                </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <article class="event-card">
-                    <div class="event-card-img">
-                        <span class="event-card-date">
-                            <span class="day">15</span>
-                            <span class="month">OCT 2019</span>
-                        </span>
-                        <img src="assets/events/evento-3.jpg" alt="Charla de API Testing con Postman" loading="lazy">
-                        <div class="event-card-overlay">
-                            <a href="detalle.html?evento=3" class="btn-event btn-details" data-i18n="events.details">Ver detalles</a>
-                            <a href="confirmar_asistencia.html?evento=3" class="btn-event btn-confirm" data-i18n="events.confirm">Confirmar asistencia</a>
-                        </div>
+            <div id="evento3" class="tabcontent col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="assets/events/evento-3.jpg" alt="Monthly Talk Agosto" width="3468" height="2967" loading="lazy">
                     </div>
-                    <div class="event-card-body">
-                        <h2 class="event-card-title" data-i18n="events.e3.title">API Testing con Postman</h2>
-                        <p class="event-card-meta">
-                            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Universidad INTEC</span>
-                            <span><i class="fas fa-user" aria-hidden="true"></i>Ever Curiel</span>
+                    <div class="col-md-6">
+                        <h2>Monthly Talk — Agosto, 2026</h2>
+                        <p class="tab-title">
+                            <i class="fas fa-calendar"></i>8 ó 22 de Agosto, 2026
+                            <i class="fas fa-map-marker-alt"></i>Universidad APEC
                         </p>
-                        <p class="event-card-desc" data-i18n="events.e3.desc">Aprende a validar APIs RESTful con Postman y Newman, integrándolo en tu pipeline de CI.</p>
+                        <p class="tab-notice"><i class="fas fa-info-circle"></i> Este evento está pautado para una de estas fechas. Más información próximamente.</p>
+                        <p class="tab-text">Charlas y networking sobre QA. ¡Únete a nuestra comunidad para aprender y compartir!</p>
                     </div>
-                </article>
+                </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <article class="event-card">
-                    <div class="event-card-img">
-                        <span class="event-card-date">
-                            <span class="day">26</span>
-                            <span class="month">NOV 2019</span>
-                        </span>
-                        <img src="assets/events/evento-4.jpg" alt="Meetup de Cypress para testing moderno" loading="lazy">
-                        <div class="event-card-overlay">
-                            <a href="detalle.html?evento=4" class="btn-event btn-details" data-i18n="events.details">Ver detalles</a>
-                            <a href="confirmar_asistencia.html?evento=4" class="btn-event btn-confirm" data-i18n="events.confirm">Confirmar asistencia</a>
-                        </div>
+            <div id="evento4" class="tabcontent col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="assets/events/evento-4.jpg" alt="Monthly Talk Septiembre" width="4288" height="2848" loading="lazy">
                     </div>
-                    <div class="event-card-body">
-                        <h2 class="event-card-title" data-i18n="events.e4.title">Cypress para testing moderno</h2>
-                        <p class="event-card-meta">
-                            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Universidad INTEC</span>
-                            <span><i class="fas fa-user" aria-hidden="true"></i>Edgar Ceballos</span>
+                    <div class="col-md-6">
+                        <h2>Monthly Talk — Septiembre, 2026</h2>
+                        <p class="tab-title">
+                            <i class="fas fa-calendar"></i>12 ó 26 de Septiembre, 2026
+                            <i class="fas fa-map-marker-alt"></i>Universidad APEC
                         </p>
-                        <p class="event-card-desc" data-i18n="events.e4.desc">Descubre cómo Cypress transforma el testing frontend con una experiencia rápida e intuitiva.</p>
+                        <p class="tab-notice"><i class="fas fa-info-circle"></i> Este evento está pautado para una de estas fechas. Más información próximamente.</p>
+                        <p class="tab-text">Charlas y networking sobre QA. ¡Únete a nuestra comunidad para aprender y compartir!</p>
                     </div>
-                </article>
+                </div>
+            </div>
+            <div id="evento5" class="tabcontent col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="assets/events/evento-1.jpg" alt="Monthly Talk Octubre" width="2500" height="1669" loading="lazy">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Monthly Talk — Octubre, 2026</h2>
+                        <p class="tab-title">
+                            <i class="fas fa-calendar"></i>10 ó 24 de Octubre, 2026
+                            <i class="fas fa-map-marker-alt"></i>Universidad APEC
+                        </p>
+                        <p class="tab-notice"><i class="fas fa-info-circle"></i> Este evento está pautado para una de estas fechas. Más información próximamente.</p>
+                        <p class="tab-text">Charlas y networking sobre QA. ¡Únete a nuestra comunidad para aprender y compartir!</p>
+                    </div>
+                </div>
+            </div>
+            <div id="evento6" class="tabcontent col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="assets/events/evento-2.jpg" alt="Monthly Talk Noviembre" width="4000" height="2612" loading="lazy">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Monthly Talk — Noviembre, 2026</h2>
+                        <p class="tab-title">
+                            <i class="fas fa-calendar"></i>14 ó 28 de Noviembre, 2026
+                            <i class="fas fa-map-marker-alt"></i>Universidad APEC
+                        </p>
+                        <p class="tab-notice"><i class="fas fa-info-circle"></i> Este evento está pautado para una de estas fechas. Más información próximamente.</p>
+                        <p class="tab-text">Charlas y networking sobre QA. ¡Únete a nuestra comunidad para aprender y compartir!</p>
+                    </div>
+                </div>
+            </div>
+            <div id="evento7" class="tabcontent col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="assets/events/evento-3.jpg" alt="Monthly Talk Diciembre" width="3468" height="2967" loading="lazy">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Monthly Talk — Diciembre, 2026</h2>
+                        <p class="tab-title">
+                            <i class="fas fa-calendar"></i>12 ó 26 de Diciembre, 2026
+                            <i class="fas fa-map-marker-alt"></i>Universidad APEC
+                        </p>
+                        <p class="tab-notice"><i class="fas fa-info-circle"></i> Este evento está pautado para una de estas fechas. Más información próximamente.</p>
+                        <p class="tab-text">Charlas y networking sobre QA. ¡Únete a nuestra comunidad para aprender y compartir!</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div><!-- /.container -->
@@ -182,7 +249,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h2 class="qa-title"><span>QA</span> Dominicana</h2>
+                <img src="assets/logos/logoClaro.PNG" alt="QA Dominicana" class="site-logo">
                 <p class="qa-content" data-i18n="footer.tagline">Primera comunidad oficial de profesionales de SQA en República Dominicana.</p>
                 <div class="qa-info">
                     <span><i class="fas fa-phone"></i> <i>(829) 387 2609</i></span>
@@ -209,14 +276,10 @@
             </div>
             <div class="col-md-4">
                 <div class="newsletter">
-                    <form class="newsletter-form" action="https://formsubmit.co/ajax/qadominican@gmail.com" method="POST">
-                        <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
-                        <input type="text" name="_honey" style="display:none">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="email" id="newsletter" required>
-                        <br>
-                        <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
-                    </form>
+                    <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
+                    <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="newsletter" id="newsletter">
+                    <br>
+                    <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
                 </div>
             </div>
         </div>
