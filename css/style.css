@@ -602,8 +602,8 @@ nav {
 /* ── 8. Timer / Countdown ── */
 .timer {
     padding: 40px 0;
-    background: var(--color-dark);
-    color: #fff;
+    background: var(--color-surface-2);
+    color: var(--color-text);
     text-align: center;
     border-top: 3px solid var(--color-accent);
 }
@@ -612,7 +612,7 @@ nav {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--color-text-muted);
     margin-bottom: 8px;
 }
 /* ── 9. About Section ── */
@@ -850,7 +850,7 @@ section.values h2 {
 /* ── 10. Events & Tabs ── */
 section.events {
     padding: 75px 0 130px;
-    background: var(--color-bg-light);
+    background: transparent;
 }
 
 /* Reusable section intro (heading + lead text) */
@@ -992,7 +992,7 @@ section.events {
 }
 
 .btn-details {
-    background: #fff;
+    background: var(--color-surface);
     color: var(--color-primary);
 }
 
@@ -1736,7 +1736,7 @@ section.events div > h2 {
     color: #fff;
     text-align: left !important;
     padding-bottom: 0 !important;
-    font-size: 1.75rem !important;
+    font-size: 1.25rem !important;
 }
 
 .tabcontent .col-md-6 img {
@@ -1749,12 +1749,13 @@ section.events div > h2 {
 }
 
 #evento1 {
-    display: block;
+    display: flex;
 }
 
 .tab-title {
     padding-left: 7%;
     color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85rem;
 }
 
 .tab-title i {
@@ -1767,7 +1768,8 @@ section.events div > h2 {
     text-align: justify;
     padding-top: 3%;
     font-weight: 400;
-    line-height: 1.7;
+    font-size: 0.875rem;
+    line-height: 1.6;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -1864,14 +1866,14 @@ section.events div > h2 {
 }
 
 /* ── 12. Blog ── */
-#blog{
+#blog, section.blog {
     background: var(--color-bg-light);
     padding: 25px 0 40px;
 }
-#blog .section_subtitle{
+#blog .section_subtitle, section.blog .section_subtitle {
     color: var(--color-text-muted);
 }
-#blog h2{
+#blog h2, section.blog h2 {
     font-size: 2.5rem;
     font-weight: bold;
     color: var(--color-primary);
@@ -2191,27 +2193,27 @@ section.events div > h2 {
 /* ── Page Title Bar mejorado ── */
 .page-title-bar {
     text-align: center;
-    padding: 2.5rem 2rem 2.5rem;  /* reduce de 4rem a 2.5rem */
+    padding: 1.25rem 2rem 1.25rem;
 }
 
 .page-title-bar h1 {
-    font-size: clamp(3rem, 7vw, 5rem);
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 0.75rem;
     color: #ffffff;
     max-width: 900px;
 }
 
 .page-title-bar p {
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
     font-weight: 300;
     color: rgba(255, 255, 255, 0.80);
     margin: 0 auto;
     letter-spacing: 0.02em;
     text-transform: none;
-    line-height: 1.85;
+    line-height: 1.6;
     max-width: 700px;
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -2241,23 +2243,137 @@ section.events div > h2 {
     margin-bottom: 2rem;
 }
 
-#logo img,
-.nav-menu-logo img {
+.site-logo {
     display: block;
+    height: 150px;
     width: auto;
+    max-width: 320px;
     background: transparent;
     border-radius: 0;
     padding: 0;
 }
 
-#logo img {
-    height: 55px;
-    width: auto;
-    max-width: 160px;
+.footer .site-logo {
+    margin-bottom: 1rem;
 }
 
-.nav-menu-logo img {
-    height: 40px;
-    width: auto;
+
+
+/* ── Theme — Bootstrap overrides ── */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: var(--color-surface-2);
+    border-color: var(--color-border);
+    color: var(--color-text);
 }
 
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: var(--color-surface);
+    border-color: var(--color-primary);
+    color: var(--color-text);
+    box-shadow: 0 0 0 0.2rem rgba(29, 78, 216, 0.3);
+}
+
+[data-theme="dark"] .form-control::placeholder,
+[data-theme="dark"] .form-select::placeholder {
+    color: var(--color-text-muted);
+}
+
+[data-theme="light"] .form-control,
+[data-theme="light"] .form-select {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+}
+
+[data-theme="light"] .form-control:focus,
+[data-theme="light"] .form-select:focus {
+    background-color: var(--color-bg);
+    border-color: var(--color-primary);
+    color: var(--color-text);
+    box-shadow: 0 0 0 0.2rem rgba(29, 78, 216, 0.2);
+}
+
+/* Secciones de contenido principal */
+[data-theme="dark"] section:not(.events):not(.hero):not(.timer) {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+[data-theme="dark"] .contact-title,
+[data-theme="dark"] section h2,
+[data-theme="dark"] section h3,
+[data-theme="dark"] section p:not(.hero-sub):not(.hero-eyebrow) {
+    color: inherit;
+}
+
+/* Cards y superficies */
+[data-theme="dark"] .card,
+[data-theme="dark"] .post-wrapper {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+}
+
+[data-theme="dark"] .card-body,
+[data-theme="dark"] .card-title,
+[data-theme="dark"] .card-text {
+    color: var(--color-text);
+}
+
+/* Staff — Swiper slides */
+[data-theme="dark"] .swiper-slide {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+}
+[data-theme="light"] .swiper-slide {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+}
+
+/* index.html — timer números */
+.timer #dias,
+.timer #horas,
+.timer #minutos,
+.timer #segundos {
+    color: var(--color-primary);
+}
+
+/* blog — post content text */
+.post-content p {
+    color: var(--color-text-dark);
+}
+[data-theme="dark"] .post-content p {
+    color: var(--color-text);
+}
+[data-theme="dark"] .post-wrapper {
+    background-color: var(--color-surface);
+}
+[data-theme="light"] .post-wrapper {
+    background-color: var(--color-surface);
+}
+
+/* ── Página Eventos — fondo global ── */
+html:has(body.pg-eventos) {
+    min-height: 100vh;
+    background-color: #0a0010;
+    background-image: url('../assets/bg-eventos.png');
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.pg-eventos {
+    min-height: 100vh;
+    background: transparent;
+}
+
+body.pg-eventos .page-header {
+    background: transparent;
+}
+
+body.pg-eventos .page-header::before {
+    display: none;
+}

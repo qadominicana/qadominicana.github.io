@@ -130,7 +130,7 @@ if (document.querySelector('.tablinks')) {
         document.querySelectorAll('.tablinks').forEach(function (el) {
             el.classList.remove('active');
         });
-        document.getElementById(tabName).style.display = 'block';
+        document.getElementById(tabName).style.display = 'flex';
         evt.currentTarget.classList.add('active');
     }
 }
@@ -154,90 +154,3 @@ if (document.querySelector('.swiper')) {
         },
     });
 }
-
-// ── Form Submissions ──────────────────────────────────────────────────────────
-
-document.addEventListener('submit', function (e) {
-    const form = e.target;
-    // Check if it's one of our forms (contact or newsletter)
-    if (form.action && form.action.includes('formsubmit.co')) {
-        e.preventDefault();
-
-        const submitBtn = form.querySelector('[type="submit"]');
-        if (!submitBtn) return;
-
-        const originalBtnText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-
-        const formData = new FormData(form);
-        const data = {};
-        formData.forEach((value, key) => { data[key] = value; });
-
-        fetch(form.action, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
-            const lang = localStorage.getItem('qa-lang') || (navigator.language.startsWith('en') ? 'en' : 'es');
-            const isNewsletter = form.classList.contains('newsletter-form');
-            
-            if (response.ok) {
-                const msgKey = isNewsletter ? 'footer.success' : 'contact.success';
-                // translations is global from i18n.js
-                const message = (typeof translations !== 'undefined' && translations[lang][msgKey]) 
-                    ? translations[lang][msgKey] 
-                    : (lang === 'es' ? '¡Enviado con éxito!' : 'Sent successfully!');
-                
-                const msgDiv = document.createElement('div');
-                msgDiv.className = 'alert alert-success mt-3 shadow-sm border-0';
-                msgDiv.style.borderRadius = '8px';
-                msgDiv.role = 'alert';
-                msgDiv.innerHTML = `<i class="fas fa-check-circle me-2"></i> ${message}`;
-                
-                form.appendChild(msgDiv);
-                form.reset();
-                
-                setTimeout(() => {
-                    if (msgDiv.parentNode) {
-                        msgDiv.style.opacity = '0';
-                        msgDiv.style.transition = 'opacity 0.5s ease';
-                        setTimeout(() => msgDiv.remove(), 500);
-                    }
-                }, 5000);
-            } else {
-                throw new Error('FormSubmit error');
-            }
-        })
-        .catch(err => {
-            console.error('Submission error:', err);
-            const lang = localStorage.getItem('qa-lang') || (navigator.language.startsWith('en') ? 'en' : 'es');
-            const message = (typeof translations !== 'undefined' && translations[lang]['contact.error'])
-                ? translations[lang]['contact.error']
-                : (lang === 'es' ? 'Error al enviar. Intenta de nuevo.' : 'Error sending. Try again.');
-            
-            const msgDiv = document.createElement('div');
-            msgDiv.className = 'alert alert-danger mt-3 shadow-sm border-0';
-            msgDiv.style.borderRadius = '8px';
-            msgDiv.role = 'alert';
-            msgDiv.innerHTML = `<i class="fas fa-exclamation-triangle me-2"></i> ${message}`;
-            
-            form.appendChild(msgDiv);
-            setTimeout(() => {
-                if (msgDiv.parentNode) {
-                    msgDiv.style.opacity = '0';
-                    msgDiv.style.transition = 'opacity 0.5s ease';
-                    setTimeout(() => msgDiv.remove(), 500);
-                }
-            }, 5000);
-        })
-        .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalBtnText;
-        });
-    }
-});
