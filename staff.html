@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script>!function(){var t=localStorage.getItem('qa-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}();</script>
 </head>
@@ -79,72 +78,108 @@
 </header>
 
 <main id="main-content">
-<section id="swiper">
-    <div class="container-fluid">
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="boximg">
-                        <img class="img-fluid" src="assets/profiles/carlos-pineda.jpg" alt="Carlos Pineda" width="300" height="311" loading="lazy">
-                    </div>
-                    <div class="details">
-                        <h3>Carlos Pineda<br><span>Testing Coordinator en Evertec</span></h3>
-                    </div>
+<section id="staff-section">
+    <div class="container">
+        <div class="staff-cards">
+
+            <article class="staff-card">
+                <div class="sc-photo">
+                    <img src="assets/profiles/alexander-vegazo.jpg" alt="Alexander Vegazo Rodríguez" loading="lazy">
                 </div>
-                <div class="swiper-slide">
-                    <div class="boximg">
-                        <img class="img-fluid" src="assets/profiles/alexander-vegazo.jpg" alt="Alexander Vegazo Rodriguez" width="300" height="300" loading="lazy">
-                    </div>
-                    <div class="details">
-                        <h3>Alexander Vegazo Rodriguez<br><span>Sr. Software Test Analyst at Siembra</span></h3>
-                    </div>
+                <div class="sc-body">
+                    <h3 class="sc-name">Alexander Vegazo Rodríguez</h3>
+                    <span class="sc-role">Fundador / Organizador</span>
+                    <p class="sc-bio">Ingeniero de Software especializado en Calidad de Software. Senior SDET con más de 10 años de experiencia en automatización de pruebas, logrando reducir los tiempos de testing en 50% y la ejecución manual en 85%. Diseña e implementa soluciones con modelos de IA de las familias Claude, GPT, Gemini, Qwen y Kimi para optimizar todo el SDLC. Fundador y líder voluntario de QA Dominicana, apasionado por mentorear equipos y construir la próxima generación de ingeniería de software impulsada por IA.</p>
                 </div>
-                <div class="swiper-slide">
-                    <div class="boximg">
-                        <img class="img-fluid" src="assets/profiles/ever-curiel.jpg" alt="Ever Curiel Moran" width="300" height="300" loading="lazy">
-                    </div>
-                    <div class="details">
-                        <h3>Ever Curiel Moran<br><span>Sub Gerente - Quality Software at Banco BHD León</span></h3>
-                    </div>
+            </article>
+
+            <article class="staff-card">
+                <div class="sc-photo">
+                    <img src="assets/profiles/ever-curiel.jpg" alt="Ever Curiel" loading="lazy">
                 </div>
-                <div class="swiper-slide">
-                    <div class="boximg">
-                        <img class="img-fluid" src="assets/profiles/edgar-ceballos.jpg" alt="Edgar Ceballos García" width="300" height="300" loading="lazy">
-                    </div>
-                    <div class="details">
-                        <h3>Edgar Ceballos García<br><span>QA-Project Manager at Newtech, S.R.L.</span></h3>
-                    </div>
+                <div class="sc-body">
+                    <h3 class="sc-name">Ever Curiel</h3>
+                    <span class="sc-role">Fundador / Organizador</span>
+                    <p class="sc-bio">Ingeniero en sistemas y líder de capítulo de SQA en Banco BHD, con más de 10 años de experiencia en aseguramiento de calidad dentro del sector tecnológico y bancario. Speaker tecnológico, investigador y cofundador de QA Dominicana. Actualmente cursa una maestría en inteligencia artificial, integrando su experiencia en SQA con una visión innovadora sobre el futuro del testing.</p>
                 </div>
-                <div class="swiper-slide">
-                    <div class="boximg">
-                        <img class="img-fluid" src="assets/profiles/cindy-gomez.jpg" alt="Cindy Gómez Cárdenas" width="300" height="300" loading="lazy">
-                    </div>
-                    <div class="details">
-                        <h3>Cindy Gómez Cárdenas<br><span>QA-Project Manager at Newtech, S.R.L.</span></h3>
-                    </div>
+            </article>
+
+            <article class="staff-card">
+                <div class="sc-photo">
+                    <img src="assets/profiles/madeline-perez.jpg" alt="Madeline Pérez" loading="lazy">
                 </div>
-                <div class="swiper-slide">
-                    <div class="boximg">
-                        <img class="img-fluid" src="assets/profiles/anuard-michelen.jpg" alt="Anuard Michelén" width="300" height="300" loading="lazy">
-                    </div>
-                    <div class="details">
-                        <h3>Anuard Michelén<br><span>Sr. Software Test Analyst at UTreee</span></h3>
-                    </div>
+                <div class="sc-body">
+                    <h3 class="sc-name">Madeline Pérez</h3>
+                    <span class="sc-role">Fundadora / Organizadora</span>
+                    <p class="sc-bio">Profesional de Quality Assurance desde 2023, especializada en entornos financieros y altamente regulados. Enfocada en pruebas funcionales, validación de requerimientos y mejora continua, con visión analítica orientada a la trazabilidad y mitigación de riesgos.</p>
                 </div>
-                <div class="swiper-slide">
-                    <div class="boximg">
-                        <img class="img-fluid" src="assets/profiles/jorge-almanzar.jpg" alt="Jorge Almánzar" width="300" height="300" loading="lazy">
-                    </div>
-                    <div class="details">
-                        <h3>Jorge Almánzar<br><span>Sr. Software Test Analyst at Unipago</span></h3>
-                    </div>
+            </article>
+
+            <article class="staff-card">
+                <div class="sc-photo">
+                    <img src="assets/profiles/delia-maria.jpg" alt="Delia María" loading="lazy">
                 </div>
-            </div>
-            <div class="swiper-pagination"></div>
+                <div class="sc-body">
+                    <h3 class="sc-name">Delia María</h3>
+                    <span class="sc-role">Organizadora</span>
+                    <p class="sc-bio">Coordina y da vida a Testing4All, gestionando desde la logística y los patrocinadores hasta la experiencia de los asistentes. Su enfoque está en construir eventos que fortalezcan la comunidad y generen conexiones valiosas entre profesionales de tecnología.</p>
+                </div>
+            </article>
+
+            <article class="staff-card">
+                <div class="sc-photo">
+                    <img src="assets/profiles/jorge-almanzar.jpg" alt="Jorge Luis Almánzar" loading="lazy">
+                </div>
+                <div class="sc-body">
+                    <h3 class="sc-name">Jorge Luis Almánzar</h3>
+                    <span class="sc-role">Organizador</span>
+                    <p class="sc-bio">Ingeniero de Software especializado en Aseguramiento de Calidad, certificado internacionalmente, con más de 4 años de experiencia. Especializado en automatización de pruebas, CI/CD y metodologías ágiles. Orientado a la mejora continua y la innovación estratégica para generar valor sostenible.</p>
+                </div>
+            </article>
+
+            <article class="staff-card">
+                <div class="sc-photo">
+                    <img src="assets/profiles/jose-rodriguez.jpg" alt="José Rodríguez" loading="lazy">
+                </div>
+                <div class="sc-body">
+                    <h3 class="sc-name">José Rodríguez</h3>
+                    <span class="sc-role">Organizador</span>
+                    <p class="sc-bio">Senior Software QA Manager en Soluciones GBH, con más de 17 años de experiencia en aseguramiento de la calidad. Especialista en automatización con TestCafe, Selenium y Cypress. Ha liderado la implementación de buenas prácticas de QA en múltiples proyectos de alta complejidad.</p>
+                </div>
+            </article>
+
+            <article class="staff-card">
+                <div class="sc-photo">
+                    <img src="assets/profiles/starling-delacruz.jpg" alt="Starling De La Cruz" loading="lazy">
+                </div>
+                <div class="sc-body">
+                    <h3 class="sc-name">Starling De La Cruz</h3>
+                    <span class="sc-role">Organizador</span>
+                    <p class="sc-bio">QA Engineer con experiencia en automatización y testing manual, aplicando principios ISTQB en entornos ágiles con stack en Playwright, Cypress, Selenium, Postman y Mable, integrado en CI/CD con GitHub Actions y Azure DevOps. Incorpora modelos de IA —Claude, GPT y Gemini— para optimizar el ciclo de testing: generación de casos de prueba, análisis de logs e identificación de patrones de fallos, impulsando soluciones de calidad más inteligentes y eficientes.</p>
+                </div>
+            </article>
+
         </div>
     </div>
 </section>
 </main>
+
+<!-- Staff Modal -->
+<div class="staff-modal-overlay" id="staffModal" aria-modal="true" role="dialog" aria-label="Perfil de staff">
+    <div class="staff-modal">
+        <button type="button" class="staff-modal-close" aria-label="Cerrar">
+            <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        <div class="staff-modal-photo">
+            <img id="modalImg" src="" alt="">
+        </div>
+        <div class="staff-modal-info">
+            <h2 id="modalName"></h2>
+            <span class="staff-modal-role" id="modalRole"></span>
+            <p class="staff-modal-bio" id="modalBio"></p>
+        </div>
+    </div>
+</div>
 
 <footer class="footer">
     <div class="container">
@@ -188,7 +223,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
