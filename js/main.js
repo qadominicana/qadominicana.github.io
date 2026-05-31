@@ -135,22 +135,51 @@ if (document.querySelector('.tablinks')) {
     }
 }
 
-// Swiper — only on staff.html
-if (document.querySelector('.swiper')) {
-    new Swiper('.swiper', {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        coverflowEffect: {
-            rotate: 60,
-            stretch: 0,
-            depth: 500,
-            modifier: 5,
-            slideShadows: true,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-        },
-    });
+// Staff cards — scroll reveal
+const staffCards = document.querySelectorAll('.staff-card');
+if (staffCards.length) {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    staffCards.forEach(card => observer.observe(card));
 }
+
+// Staff modal
+(function () {
+    const modal     = document.getElementById('staffModal');
+    if (!modal) return;
+
+    const modalImg  = document.getElementById('modalImg');
+    const modalName = document.getElementById('modalName');
+    const modalRole = document.getElementById('modalRole');
+    const modalBio  = document.getElementById('modalBio');
+    const closeBtn  = modal.querySelector('.staff-modal-close');
+
+    function openModal(card) {
+        modalImg.src            = card.querySelector('.sc-photo img').src;
+        modalImg.alt            = card.querySelector('.sc-photo img').alt;
+        modalName.textContent   = card.querySelector('.sc-name').textContent;
+        modalRole.textContent   = card.querySelector('.sc-role').textContent;
+        modalBio.textContent    = card.querySelector('.sc-bio').textContent;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.staff-card').forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+}());
