@@ -276,10 +276,14 @@
             </div>
             <div class="col-md-4">
                 <div class="newsletter">
-                    <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
-                    <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="newsletter" id="newsletter">
-                    <br>
-                    <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
+                    <form class="newsletter-form" action="https://formsubmit.co/ajax/qadominican@gmail.com" method="POST">
+                        <h2 data-i18n="footer.newsletter">Suscríbete a nuestro boletín</h2>
+                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input class="form-control" data-i18n-placeholder="footer.email.ph" placeholder="pedro@example.com" type="email" name="email" id="newsletter" required>
+                        <br>
+                        <button type="submit" class="btn btn-info" data-i18n="footer.subscribe">Suscribir</button>
+                    </form>
                 </div>
             </div>
         </div>
