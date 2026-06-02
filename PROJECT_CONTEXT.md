@@ -25,7 +25,7 @@
 | 📅 Eventos      | `eventos.html`  | ⚠️ Parcial  | 4 eventos con mismo contenido placeholder                 |
 | 👥 Staff        | `staff.html`    | ✅ Funcional | 7 miembros con Swiper carousel                            |
 | 📝 Blog         | `blog.html`     | ⚠️ Parcial  | 3 posts con mismo texto en inglés                         |
-| ✉️ Contacto     | `contacto.html` | ⚠️ Parcial  | Formulario sin backend                                    |
+| ✉️ Contacto     | `contacto.html` | ✅ Funcional | Formulario integrado con FormSubmit                       |
 
 ---
 
