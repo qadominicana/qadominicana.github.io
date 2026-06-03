@@ -48,49 +48,53 @@ document.addEventListener('keydown', function (e) {
 // Countdown timer — only on pages that have the timer elements
 if (document.querySelector('#dias')) {
     const EVENTOS = [
-        { fecha: new Date('2026-06-13T18:00:00'), nombre: 'Monthly Talk — 13 de Junio' },
-        { fecha: new Date('2026-07-11T18:00:00'), nombre: 'Testing 4 All — 11 de Julio' },
-        { fecha: new Date('2026-08-08T18:00:00'), nombre: 'Monthly Talk — 8 de Agosto' },
-        { fecha: new Date('2026-09-12T18:00:00'), nombre: 'Monthly Talk — 12 de Septiembre' },
-        { fecha: new Date('2026-10-10T18:00:00'), nombre: 'Monthly Talk — 10 de Octubre' },
-        { fecha: new Date('2026-11-14T18:00:00'), nombre: 'Monthly Talk — 14 de Noviembre' },
-        { fecha: new Date('2026-12-12T18:00:00'), nombre: 'Monthly Talk — 12 de Diciembre' },
+        { fecha: new Date('2026-06-13T18:00:00'), es: 'Monthly Talk — 13 de Junio',      en: 'Monthly Talk — June 13' },
+        { fecha: new Date('2026-07-11T18:00:00'), es: 'Testing 4 All — 11 de Julio',     en: 'Testing 4 All — July 11' },
+        { fecha: new Date('2026-08-08T18:00:00'), es: 'Monthly Talk — 8 de Agosto',      en: 'Monthly Talk — August 8' },
+        { fecha: new Date('2026-09-12T18:00:00'), es: 'Monthly Talk — 12 de Septiembre', en: 'Monthly Talk — September 12' },
+        { fecha: new Date('2026-10-10T18:00:00'), es: 'Monthly Talk — 10 de Octubre',    en: 'Monthly Talk — October 10' },
+        { fecha: new Date('2026-11-14T18:00:00'), es: 'Monthly Talk — 14 de Noviembre',  en: 'Monthly Talk — November 14' },
+        { fecha: new Date('2026-12-12T18:00:00'), es: 'Monthly Talk — 12 de Diciembre',  en: 'Monthly Talk — December 12' },
     ];
 
-    const titleEl  = document.querySelector('#timer-event-name');
-    const diasEl   = document.querySelector('#dias');
-    const horasEl  = document.querySelector('#horas');
-    const minEl    = document.querySelector('#minutos');
-    const segEl    = document.querySelector('#segundos');
+    const titleEl = document.querySelector('#timer-event-name');
+    const diasEl  = document.querySelector('#dias');
+    const horasEl = document.querySelector('#horas');
+    const minEl   = document.querySelector('#minutos');
+    const segEl   = document.querySelector('#segundos');
 
     let intervalo = null;
+
+    function timerLang() {
+        return (typeof getLang === 'function' ? getLang() : null) || 'es';
+    }
 
     function proximoEvento() {
         return EVENTOS.find(function (e) { return e.fecha.getTime() > Date.now(); }) || null;
     }
 
+    function actualizarTitulo(evento) {
+        if (!titleEl) return;
+        var lang = timerLang();
+        if (!evento) {
+            titleEl.textContent = lang === 'en' ? 'See you next year!' : '¡Hasta el próximo año!';
+        } else {
+            var prefix = lang === 'en' ? 'Next event:' : 'Próximo evento:';
+            titleEl.textContent = prefix + ' ' + (evento[lang] || evento.es);
+        }
+    }
+
     function iniciarContador() {
         if (intervalo) clearInterval(intervalo);
-
-        const evento = proximoEvento();
-
+        var evento = proximoEvento();
+        actualizarTitulo(evento);
         if (!evento) {
-            if (titleEl) titleEl.textContent = '¡Hasta el próximo año!';
             diasEl.textContent = horasEl.textContent = minEl.textContent = segEl.textContent = '0';
             return;
         }
-
-        if (titleEl) titleEl.textContent = 'Próximo evento: ' + evento.nombre;
-
         intervalo = setInterval(function () {
-            const distancia = evento.fecha.getTime() - Date.now();
-
-            if (distancia <= 0) {
-                clearInterval(intervalo);
-                iniciarContador();
-                return;
-            }
-
+            var distancia = evento.fecha.getTime() - Date.now();
+            if (distancia <= 0) { clearInterval(intervalo); iniciarContador(); return; }
             diasEl.textContent  = Math.floor(distancia / (1000 * 60 * 60 * 24));
             horasEl.textContent = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             minEl.textContent   = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
@@ -99,6 +103,10 @@ if (document.querySelector('#dias')) {
     }
 
     iniciarContador();
+
+    document.addEventListener('langchange', function () {
+        actualizarTitulo(proximoEvento());
+    });
 }
 
 // Sticky nav on scroll

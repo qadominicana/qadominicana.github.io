@@ -528,6 +528,7 @@ function getLang() {
 function setLang(lang) {
     localStorage.setItem('qa-lang', lang);
     applyLang(lang);
+    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
 }
 
 function applyLang(lang) {
