@@ -1857,13 +1857,12 @@ section.events div > h2 {
 .staff-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border-subtle);
-    border-top: 3px solid var(--color-primary);
+    border-top: 3px solid var(--color-accent);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
+    flex-direction: column;
     flex: 0 0 calc(33.333% - 0.84rem);
     min-width: 0;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -1876,67 +1875,60 @@ section.events div > h2 {
 
 /* ── Photo ── */
 .sc-photo {
-    width: 140px;
-    min-width: 140px;
-    flex-shrink: 0;
+    width: 100%;
+    overflow: hidden;
     background: var(--color-surface-2);
-    display: flex;
-    flex-direction: column;
 }
 
 .sc-photo img {
-    width: 140px;
-    height: 140px;
+    width: 100%;
+    height: 280px;
     object-fit: cover;
     object-position: top;
     display: block;
     transition: transform 0.45s ease;
-    flex-shrink: 0;
 }
 
 .staff-card:hover .sc-photo img {
-    transform: scale(1.06);
+    transform: scale(1.04);
 }
 
 .sc-photo-adjust         { object-position: center 38%; }
 .sc-photo-adjust-erick   { object-position: center 22%; }
 .sc-photo-adjust-starling { object-position: center 28%; }
 
-.sc-role {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.62rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #ffffff;
-    text-align: center;
-    padding: 0.45rem 0.5rem;
-    flex: 1;
-}
-
 /* ── Body ── */
 .sc-body {
-    padding: 1.1rem 1.25rem 1.15rem;
+    padding: 1.1rem 1.25rem 1.25rem;
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    border-left: 1px solid var(--color-border-subtle);
-    min-width: 0;
 }
 
 .sc-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--color-primary);
     margin: 0;
     line-height: 1.3;
 }
 
+.sc-role {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    background: var(--color-accent);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
 .sc-bio {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     line-height: 1.65;
     color: var(--color-text-dark);
     margin: 0.2rem 0 0;
