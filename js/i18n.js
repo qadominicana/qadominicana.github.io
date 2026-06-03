@@ -89,14 +89,17 @@ const translations = {
         'events.e4.desc':  'Descubre cómo Cypress transforma el testing frontend con una experiencia rápida e intuitiva.',
 
         // Staff page
-        'staff.header': 'Nuestro Staff',
-        'staff.sub':    'Co-fundadores y colaboradores',
+        'staff.header':        'Nuestro Staff',
+        'staff.sub':           'Co-fundadores y colaboradores',
+        'staff.role.founder':      'Fundador / Organizador',
+        'staff.role.organizer':    'Organizador',
+        'staff.role.organizer-f':  'Organizadora',
         'staff.bio.alexander': 'Ingeniero de Software especializado en Calidad de Software. Senior SDET con más de 10 años de experiencia en automatización de pruebas, logrando reducir los tiempos de testing en 50% y la ejecución manual en 85%. Diseña e implementa soluciones con modelos de IA de las familias Claude, GPT, Gemini, Qwen y Kimi para optimizar todo el SDLC. Fundador y líder voluntario de QA Dominicana, apasionado por mentorear equipos y construir la próxima generación de ingeniería de software impulsada por IA.',
         'staff.bio.ever':      'Ingeniero en sistemas y líder de capítulo de SQA en Banco BHD, con más de 10 años de experiencia en aseguramiento de calidad dentro del sector tecnológico y bancario. Speaker tecnológico, investigador y cofundador de QA Dominicana. Actualmente cursa una maestría en inteligencia artificial, integrando su experiencia en SQA con una visión innovadora sobre el futuro del testing.',
         'staff.bio.erick':     'Erick Guerrero es fundador de Smart Testing, empresa especializada en aseguramiento de calidad de software, automatización de pruebas y soluciones digitales. Ha liderado equipos de QA en proyectos para sectores como banca, salud, gobierno y seguros, impulsando la calidad del software y la transformación digital. A través de su trabajo, ha contribuido al crecimiento y profesionalización de la comunidad de QA en República Dominicana, apoyando la formación y desarrollo de nuevos talentos en la industria tecnológica.',
         'staff.bio.madelaine': 'Profesional de Quality Assurance desde 2023, especializada en entornos financieros y altamente regulados. Enfocada en pruebas funcionales, validación de requerimientos y mejora continua, con visión analítica orientada a la trazabilidad y mitigación de riesgos.',
         'staff.bio.delia':     'Coordina y da vida a Testing4All, gestionando desde la logística y los patrocinadores hasta la experiencia de los asistentes. Su enfoque está en construir eventos que fortalezcan la comunidad y generen conexiones valiosas entre profesionales de tecnología.',
-        'staff.bio.jorge':     'Ingeniero de Software especializado en Aseguramiento de Calidad, certificado internacionalmente, con más de 4 años de experiencia. Especializado en automatización de pruebas, CI/CD y metodologías ágiles. Orientado a la mejora continua y la innovación estratégica para generar valor sostenible.',
+        'staff.bio.jorge':     'Ingeniero de Software especializado en Aseguramiento de Calidad, certificado internacionalmente, con más de 4 años de experiencia enfocado en la automatización de pruebas, CI/CD y metodologías ágiles. Orientado a la mejora continua y la innovación estratégica para generar valor sostenible.',
         'staff.bio.jose':      'Senior Software QA Manager en Soluciones GBH, con más de 17 años de experiencia en aseguramiento de la calidad. Especialista en automatización con TestCafe, Selenium y Cypress. Ha liderado la implementación de buenas prácticas de QA en múltiples proyectos de alta complejidad.',
         'staff.bio.starling':  'QA Engineer con experiencia en automatización y testing manual, aplicando principios ISTQB en entornos ágiles con stack en Playwright, Cypress, Selenium, Postman y Mable, integrado en CI/CD con GitHub Actions y Azure DevOps. Incorpora modelos de IA —Claude, GPT y Gemini— para optimizar el ciclo de testing: generación de casos de prueba, análisis de logs e identificación de patrones de fallos, impulsando soluciones de calidad más inteligentes y eficientes.',
 
@@ -209,8 +212,11 @@ const translations = {
         'events.e4.desc':  'Discover how Cypress transforms frontend testing with a fast, intuitive experience.',
 
         // Staff page
-        'staff.header': 'Our Staff',
-        'staff.sub':    'Co-founders and collaborators',
+        'staff.header':        'Our Staff',
+        'staff.sub':           'Co-founders and collaborators',
+        'staff.role.founder':      'Founder / Organizer',
+        'staff.role.organizer':    'Organizer',
+        'staff.role.organizer-f':  'Organizer',
         'staff.bio.alexander': 'Software Engineer specialized in Software Quality. Senior SDET with over 10 years of experience in test automation, reducing testing times by 50% and manual execution by 85%. Designs and implements solutions using AI models from the Claude, GPT, Gemini, Qwen and Kimi families to optimize the entire SDLC. Founder and volunteer leader of QA Dominicana, passionate about mentoring teams and building the next generation of AI-powered software engineering.',
         'staff.bio.ever':      'Systems engineer and SQA chapter leader at Banco BHD, with over 10 years of experience in quality assurance within the technology and banking sector. Tech speaker, researcher and co-founder of QA Dominicana. Currently pursuing a master\'s degree in artificial intelligence, integrating his SQA expertise with an innovative vision of the future of testing.',
         'staff.bio.erick':     'Erick Guerrero is the founder of Smart Testing, a company specializing in software quality assurance, test automation and digital solutions. He has led QA teams on projects for sectors such as banking, healthcare, government and insurance, driving software quality and digital transformation. Through his work, he has contributed to the growth and professionalization of the QA community in the Dominican Republic, supporting the training and development of new talent in the technology industry.',

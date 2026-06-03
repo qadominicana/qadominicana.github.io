@@ -1898,6 +1898,10 @@ section.events div > h2 {
     transform: scale(1.06);
 }
 
+.sc-photo-adjust         { object-position: center 38%; }
+.sc-photo-adjust-erick   { object-position: center 22%; }
+.sc-photo-adjust-starling { object-position: center 28%; }
+
 .sc-role {
     display: flex;
     align-items: center;
