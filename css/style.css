@@ -1864,7 +1864,7 @@ section.events div > h2 {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    flex: 0 0 calc(50% - 0.625rem);
+    flex: 0 0 calc(33.333% - 0.84rem);
     min-width: 0;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
@@ -1940,9 +1940,15 @@ section.events div > h2 {
 }
 
 /* ── Responsive ── */
-@media (max-width: 767px) {
+@media (max-width: 900px) {
     .staff-card {
-        flex: 0 0 calc(100% - 0px);
+        flex: 0 0 calc(50% - 0.625rem);
+    }
+}
+
+@media (max-width: 600px) {
+    .staff-card {
+        flex: 0 0 100%;
     }
     .sc-carousel-btn {
         width: 36px;
