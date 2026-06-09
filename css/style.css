@@ -57,7 +57,12 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: var(--color-bg);
+    background-color: #070d1a;
+    background-image: url('../assets/bg-eventos.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--color-text);
 }
 
@@ -356,6 +361,19 @@ header {
     letter-spacing: 0.04em;
 }
 
+.nav-menu-logo .site-logo {
+    width: 106px;
+    height: 150px;
+    object-fit: contain;
+    object-position: left center;
+    transition: filter 0.28s ease;
+}
+
+[data-theme="light"] .nav-menu-logo .site-logo {
+    /* Convierte el logo blanco al azul oscuro #1e3a8a */
+    filter: brightness(0) invert(40%) sepia(80%) hue-rotate(186deg) saturate(467%) brightness(68%);
+}
+
 .nav-menu-logo .logo-qa {
     color: var(--color-accent);
 }
@@ -602,8 +620,8 @@ nav {
 /* ── 8. Timer / Countdown ── */
 .timer {
     padding: 40px 0;
-    background: var(--color-surface-2);
-    color: var(--color-text);
+    background: rgba(7, 13, 30, 0.82);
+    color: #ffffff;
     text-align: center;
     border-top: 3px solid var(--color-accent);
 }
@@ -850,7 +868,7 @@ section.values h2 {
 /* ── 10. Events & Tabs ── */
 section.events {
     padding: 75px 0 130px;
-    background: transparent;
+    background: var(--color-bg-light);
 }
 
 /* Reusable section intro (heading + lead text) */
@@ -1629,8 +1647,9 @@ section.events div > h2 {
 
 /* Style the buttons inside the tab */
 .tab button {
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-accent);
     outline: none;
     cursor: pointer;
     padding: 28px 20px;
@@ -1641,19 +1660,20 @@ section.events div > h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
     font-size: 17px;
     border-radius: 12px;
     font-weight: bold;
-    background: rgba(29, 78, 216, 0.22);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    background: var(--color-surface);
+    box-shadow: 0 -2px 10px rgba(124, 29, 18, 0.20), 0 2px 8px rgba(0, 0, 0, 0.06);
+    height: 155px;
 }
 
 .tab div button h2 {
     margin: 0;
     padding: 0;
-    font-size: 1.55rem;
-    color: #fff;
+    font-size: 1.85rem;
+    color: var(--color-text);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1663,8 +1683,8 @@ section.events div > h2 {
 .tab div button p {
     margin: 6px 0 0 0;
     padding: 0;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1674,9 +1694,9 @@ section.events div > h2 {
 .event-pending {
     display: block;
     margin-top: 6px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
-    color: rgba(255, 210, 100, 0.85);
+    color: var(--color-primary);
     letter-spacing: 0.02em;
 }
 
@@ -1697,16 +1717,38 @@ section.events div > h2 {
     color: rgba(255, 200, 60, 0.8);
 }
 
+[data-theme="dark"] .tab-notice {
+    background: rgba(0, 0, 0, 0.45);
+    border-left-color: rgba(0, 0, 0, 0.7);
+    color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .tab-notice i {
+    color: var(--color-text-muted);
+}
+
 .tab button:hover {
-    background: rgba(29, 78, 216, 0.38);
-    border-color: rgba(29, 78, 216, 0.6);
+    background: var(--color-surface-2);
+    border-color: var(--color-primary);
+    border-top-color: var(--color-accent);
     transform: translateY(-2px);
+    box-shadow: 0 -3px 16px rgba(124, 29, 18, 0.40), 0 6px 20px rgba(0, 0, 0, 0.10);
 }
 
 .tab button.active {
     background: var(--color-primary);
     border-color: var(--color-primary);
-    box-shadow: 0 4px 16px rgba(29, 78, 216, 0.4);
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(29, 78, 216, 0.3);
+}
+
+.tab button.active h2,
+.tab button.active p {
+    color: #ffffff;
+}
+
+.tab button.active .event-pending {
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* Style the tab content */
@@ -1714,10 +1756,10 @@ section.events div > h2 {
     display: none;
     margin-top: 32px;
     padding: 32px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 16px;
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     align-items: center;
     justify-content: center;
     gap: 2rem;
@@ -1856,7 +1898,7 @@ section.events div > h2 {
 /* ── Card ── */
 .staff-card {
     background: var(--color-surface);
-    border: 1px solid var(--color-border-subtle);
+    border: 1px solid var(--color-border);
     border-top: 3px solid var(--color-accent);
     border-radius: 12px;
     overflow: hidden;
@@ -2223,7 +2265,7 @@ section.events div > h2 {
 
 /* ── 14. Footer ── */
 .footer {
-    background: var(--color-dark);
+    background: rgba(7, 13, 30, 0.93);
     padding: 56px 0 40px;
     color: rgba(255, 255, 255, 0.7);
     font-size: 13px;
@@ -2273,7 +2315,7 @@ section.events div > h2 {
     position: relative;
     overflow: hidden;
     height: auto;
-    background: var(--color-dark);
+    background: rgba(7, 13, 30, 0.80);
     display: flex;
     flex-direction: column;
 }
@@ -2589,11 +2631,10 @@ html:has(body.pg-eventos) {
 
 body.pg-eventos {
     min-height: 100vh;
-    background: transparent;
 }
 
 body.pg-eventos .page-header {
-    background: transparent;
+    background: rgba(7, 13, 30, 0.80);
 }
 
 body.pg-eventos .page-header::before {
@@ -2651,20 +2692,23 @@ body.pg-eventos .page-header::before {
 /* ── Dark sections ── */
 .hp-metrics,
 .hp-topics,
-.hp-events,
 .hp-tiers,
 .hp-transparency {
-    background: var(--color-dark);
+    background: rgba(7, 13, 30, 0.86);
 }
 
-/* ── Light sections ── */
+/* ── Light sections (opaque — adapt with theme) ── */
 .hp-about,
 .hp-community,
 .hp-why-sponsor,
 .hp-testimonials,
-.hp-staff-preview { background: var(--color-bg); }
+.hp-staff-preview { background: rgba(255, 255, 255, 0.88); }
 
-.hp-what { background: var(--color-bg-light); }
+.hp-what { background: rgba(248, 250, 252, 0.88); }
+
+.hp-events {
+    background: var(--color-bg-light);
+}
 
 /* ════ MÉTRICAS ════ */
 .hp-metrics-grid {
@@ -2908,17 +2952,18 @@ body.pg-eventos .page-header::before {
     margin-bottom: 2.5rem;
 }
 .hp-event-type {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
-    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 .hp-event-type:hover {
-    background: rgba(29,78,216,0.12);
+    background: var(--color-surface);
     border-color: rgba(29,78,216,0.3);
     transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
 }
 .hp-event-type-icon {
     font-size: 1.5rem;
@@ -2928,15 +2973,29 @@ body.pg-eventos .page-header::before {
 .hp-event-type h3 {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--color-text);
     margin: 0 0 0.5rem;
 }
 .hp-event-type p {
     font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
+    color: var(--color-text-muted);
     line-height: 1.6;
     margin: 0;
 }
+
+/* Dark mode — eventos */
+[data-theme="dark"] .hp-events {
+    background: var(--color-bg-light);
+}
+[data-theme="dark"] .hp-event-type {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+}
+[data-theme="dark"] .hp-event-type:hover {
+    border-color: rgba(96,165,250,0.35);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
 .hp-events-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -3288,4 +3347,330 @@ body.pg-eventos .page-header::before {
     .hp-tiers-grid { grid-template-columns: 1fr; }
     .hp-transparency-grid { grid-template-columns: 1fr; }
     .hp-about-stats { flex-direction: column; gap: 1rem; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   Dark Mode — Staff Module
+════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"] #staff-section {
+    background: var(--color-bg-light);
+}
+
+[data-theme="dark"] .staff-card {
+    border-color: var(--color-border);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .staff-card:hover {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .sc-name {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .sc-bio {
+    color: var(--color-text-dark);
+}
+
+[data-theme="dark"] .sc-photo {
+    background: var(--color-surface-2);
+}
+
+/* Carousel buttons — dark mode */
+[data-theme="dark"] .sc-carousel-btn {
+    background: rgba(22, 27, 34, 0.95);
+    border-color: rgba(255, 255, 255, 0.10);
+    color: #60a5fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .sc-carousel-btn:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .sc-dot {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="dark"] .sc-dot.active {
+    background: #60a5fa;
+}
+
+/* Modal — dark mode */
+[data-theme="dark"] .staff-modal {
+    background: #161b22;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .staff-modal-photo {
+    background: #0d1117;
+}
+
+[data-theme="dark"] .staff-modal-info {
+    border-top-color: var(--color-accent);
+    background: #161b22;
+}
+
+[data-theme="dark"] .staff-modal-info h2 {
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .staff-modal-role {
+    color: #fca5a5;
+    background: rgba(252, 165, 165, 0.10);
+}
+
+[data-theme="dark"] .staff-modal-bio {
+    color: #c9d1d9;
+}
+
+[data-theme="dark"] .staff-modal-close {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e6edf3;
+}
+
+[data-theme="dark"] .staff-modal-close:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MODO CLARO — Light Mode Overrides
+   Secciones con fondos hardcodeados oscuros y texto blanco
+   deben adaptarse cuando data-theme="light"
+════════════════════════════════════════════════════════════ */
+
+/* ── Fondo del body en modo claro ── */
+[data-theme="light"] body:not(.pg-eventos) {
+    background-color: var(--color-bg);
+    background-image: none;
+}
+
+/* ── Timer: fondo oscuro → claro ── */
+[data-theme="light"] .timer {
+    background: var(--color-bg-light);
+    color: var(--color-text);
+}
+[data-theme="light"] .timer-title {
+    color: var(--color-text-muted);
+}
+
+/* ── Menú deslizante: fondo oscuro → claro ── */
+[data-theme="light"] .navigation-menu {
+    background: rgba(255, 255, 255, 0.97);
+    background-image: none;
+    border-left-color: rgba(0, 0, 0, 0.07);
+    box-shadow: -16px 0 60px rgba(0, 0, 0, 0.12);
+}
+[data-theme="light"] .nav-menu-header {
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .nav-menu-logo .logo-rest {
+    color: var(--color-text);
+}
+[data-theme="light"] .nav-close-btn {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--color-text-muted);
+}
+[data-theme="light"] .nav-menu-links ul li a {
+    color: var(--color-text-muted);
+}
+[data-theme="light"] .nav-menu-links ul li a i {
+    color: rgba(0, 0, 0, 0.3);
+}
+[data-theme="light"] .nav-menu-links ul li a:hover,
+[data-theme="light"] .nav-menu-links ul li a:focus-visible {
+    color: var(--color-text);
+    background: rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .nav-menu-links ul li a.nav-active {
+    color: var(--color-primary);
+    background: rgba(29, 78, 216, 0.06);
+}
+[data-theme="light"] .nav-menu-footer {
+    border-top-color: rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .nav-menu-footer a {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+    color: var(--color-text-muted);
+}
+
+/* ── Menú deslizante: controles de idioma y tema ── */
+[data-theme="light"] .navigation-menu .lang-toggle {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+[data-theme="light"] .navigation-menu .lang-option {
+    color: rgba(0, 0, 0, 0.4);
+}
+[data-theme="light"] .navigation-menu .theme-toggle {
+    color: var(--color-text-dark);
+    border-color: rgba(0, 0, 0, 0.14);
+    background: rgba(0, 0, 0, 0.04);
+}
+
+/* ── Nav sticky en homepage (sobre fondo claro) ── */
+[data-theme="light"] .header .wrapper-nav.nav-sticky {
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .header .wrapper-nav.nav-sticky .hamburger-bar {
+    background: var(--color-text);
+}
+[data-theme="light"] .header .wrapper-nav.nav-sticky .lang-toggle {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+[data-theme="light"] .header .wrapper-nav.nav-sticky .lang-option {
+    color: rgba(0, 0, 0, 0.4);
+}
+[data-theme="light"] .header .wrapper-nav.nav-sticky .lang-option.lang-active {
+    color: #fff;
+}
+[data-theme="light"] .header .wrapper-nav.nav-sticky .theme-toggle {
+    color: var(--color-text-dark);
+    border-color: rgba(0, 0, 0, 0.14);
+    background: rgba(0, 0, 0, 0.04);
+}
+
+/* ── Secciones oscuras del homepage ── */
+[data-theme="light"] .hp-metrics,
+[data-theme="light"] .hp-topics,
+[data-theme="light"] .hp-tiers,
+[data-theme="light"] .hp-transparency {
+    background: var(--color-bg-light);
+}
+
+/* Métricas */
+[data-theme="light"] .hp-metric {
+    border-color: var(--color-border);
+}
+[data-theme="light"] .hp-metric-num {
+    color: var(--color-primary);
+}
+[data-theme="light"] .hp-metric-label {
+    color: var(--color-text-muted);
+}
+
+/* Temas / Tags */
+[data-theme="light"] .hp-topic-tag {
+    color: var(--color-text);
+    background: var(--color-surface);
+    border-color: var(--color-border);
+}
+[data-theme="light"] .hp-topic-tag:hover {
+    color: var(--color-primary);
+    background: rgba(29, 78, 216, 0.06);
+    border-color: rgba(29, 78, 216, 0.3);
+}
+[data-theme="light"] .hp-topic-tag i {
+    color: var(--color-primary);
+}
+
+/* Planes de patrocinio */
+[data-theme="light"] .hp-tier {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+}
+[data-theme="light"] .hp-tier-header h3 {
+    color: var(--color-text);
+}
+[data-theme="light"] .hp-tier-list li {
+    color: var(--color-text-dark);
+}
+[data-theme="light"] .hp-tier-list li i {
+    color: #16a34a;
+}
+[data-theme="light"] .hp-tier-btn {
+    color: var(--color-primary);
+    background: transparent;
+    border-color: var(--color-border);
+}
+[data-theme="light"] .hp-tier-btn:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+/* Transparencia */
+[data-theme="light"] .hp-trans-item {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+}
+[data-theme="light"] .hp-trans-item:hover {
+    background: rgba(29, 78, 216, 0.04);
+    border-color: rgba(29, 78, 216, 0.2);
+}
+[data-theme="light"] .hp-trans-item h3 {
+    color: var(--color-text);
+}
+[data-theme="light"] .hp-trans-item p {
+    color: var(--color-text-muted);
+}
+
+/* Secciones semitransparentes del homepage → fondo sólido en modo claro */
+[data-theme="light"] .hp-about,
+[data-theme="light"] .hp-community,
+[data-theme="light"] .hp-why-sponsor,
+[data-theme="light"] .hp-testimonials,
+[data-theme="light"] .hp-staff-preview {
+    background: var(--color-surface);
+}
+[data-theme="light"] .hp-what {
+    background: var(--color-bg-light);
+}
+
+/* Títulos de secciones oscuras → texto oscuro en modo claro */
+[data-theme="light"] .hp-title-light {
+    color: var(--color-text);
+}
+[data-theme="light"] .hp-eyebrow-light {
+    color: var(--color-text-muted);
+}
+
+/* Modal de staff: botón de cierre sobre fondo claro */
+[data-theme="light"] .staff-modal-close {
+    background: rgba(0, 0, 0, 0.07);
+    color: var(--color-text-dark);
+}
+
+/* ── Página Eventos: contenido de tabs ── */
+/* Modo claro: tabcontent tiene bg blanco → texto oscuro */
+[data-theme="light"] .tabcontent h2 {
+    color: #0f172a;
+}
+[data-theme="light"] .tab-title {
+    color: #475569;
+}
+[data-theme="light"] .tab-title i {
+    color: var(--color-primary);
+}
+[data-theme="light"] .tab-text {
+    color: #334155;
+}
+[data-theme="light"] .tab-notice {
+    background: rgba(202, 138, 4, 0.08);
+    border-left-color: rgba(202, 138, 4, 0.5);
+    color: #92400e;
+}
+[data-theme="light"] .tab-notice i {
+    color: #92400e;
+}
+
+/* Modo oscuro: texto blanco explícito */
+[data-theme="dark"] .tabcontent h2 {
+    color: #ffffff;
+}
+[data-theme="dark"] .tab-title {
+    color: rgba(255, 255, 255, 0.75);
+}
+[data-theme="dark"] .tab-text {
+    color: rgba(255, 255, 255, 0.8);
 }

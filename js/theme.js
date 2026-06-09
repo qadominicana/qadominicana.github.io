@@ -2,8 +2,8 @@
     'use strict';
 
     var STORAGE_KEY = 'qa-theme';
-    var ICON_DARK = 'fa-moon';
-    var ICON_LIGHT = 'fa-sun';
+    var ICON_DARK   = 'fa-moon';
+    var ICON_LIGHT  = 'fa-sun';
 
     function getSystemPref() {
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -15,6 +15,8 @@
 
     function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
+
+        /* Icono del toggle */
         document.querySelectorAll('.theme-toggle').forEach(function (btn) {
             var icon = btn.querySelector('i');
             if (!icon) return;
@@ -28,6 +30,7 @@
                 btn.setAttribute('aria-label', 'Cambiar a modo oscuro');
             }
         });
+
     }
 
     function toggleTheme() {
@@ -36,15 +39,18 @@
         applyTheme(next);
     }
 
-    /* Apply immediately (before DOMContentLoaded) to avoid flash */
+    /* Aplicar antes de DOMContentLoaded para evitar flash de tema */
     applyTheme(getTheme());
 
     document.addEventListener('DOMContentLoaded', function () {
+        /* Re-aplicar para actualizar estado inicial (DOM ya disponible) */
+        applyTheme(getTheme());
+
         document.querySelectorAll('.theme-toggle').forEach(function (btn) {
             btn.addEventListener('click', toggleTheme);
         });
 
-        /* Sync if system preference changes while page is open */
+        /* Sincronizar si el sistema cambia preferencia mientras la página está abierta */
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
             if (!localStorage.getItem(STORAGE_KEY)) {
                 applyTheme(getSystemPref());
