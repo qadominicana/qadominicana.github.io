@@ -2944,11 +2944,18 @@ body.pg-eventos .page-header::before {
 }
 
 /* ════ EVENTOS ════ */
-.hp-events-types {
+/*.hp-events-types {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
     margin-bottom: 2.5rem;
+}*/
+.hp-events-types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    max-width: 1000px;
+    margin: 0 auto 2.5rem;
 }
 .hp-event-type {
     background: var(--color-surface);
@@ -2995,18 +3002,34 @@ body.pg-eventos .page-header::before {
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 
-.hp-events-gallery {
+/*.hp-events-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
     margin-bottom: 2rem;
     border-radius: 12px;
     overflow: hidden;
+}*/
+
+.hp-events-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    max-width: 1000px;
+    margin: 0 auto 2rem;
+    border-radius: 0;
+    overflow: visible;
 }
+/*.hp-gallery-item {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}*/
 .hp-gallery-item {
     aspect-ratio: 4/3;
     overflow: hidden;
+    border-radius: 12px;
 }
+
 .hp-gallery-item img {
     width: 100%;
     height: 100%;
@@ -3319,7 +3342,8 @@ body.pg-eventos .page-header::before {
     .hp-what-grid { grid-template-columns: repeat(2, 1fr); }
     .hp-community-grid { grid-template-columns: repeat(2, 1fr); }
     .hp-why-grid { grid-template-columns: repeat(2, 1fr); }
-    .hp-events-types { grid-template-columns: repeat(2, 1fr); }
+    /*.hp-events-types { grid-template-columns: repeat(2, 1fr); }*/
+    .hp-events-gallery { grid-template-columns: repeat(3, 1fr); }
     .hp-testimonials-grid { grid-template-columns: 1fr; }
 }
 
