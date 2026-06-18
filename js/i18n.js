@@ -97,6 +97,8 @@ const translations = {
 'home.community.c5.desc':   'CTOs, directores y líderes técnicos que moldean la cultura de calidad en sus organizaciones.',
 'home.community.c6.title':  'Estudiantes',
 'home.community.c6.desc':   'La próxima generación de talentos QA construyendo sus bases en un ecosistema de apoyo real.',
+'home.community.c6.title1':  'CEOs y Líderes',
+'home.community.c6.desc1':   'Visionarios que impulsan el crecimiento empresarial promoviendo una cultura de calidad.'
         // Home — Events
 'home.events.eyebrow':        'Eventos que conectan y transforman',
 'home.events.title':          'Espacios para aprender de los líderes de la industria',
@@ -355,6 +357,8 @@ const translations = {
 'home.community.c5.desc':   'CTOs, directors and tech leaders shaping the quality culture in their organizations.',
 'home.community.c6.title':  'Students',
 'home.community.c6.desc':   'The next generation of QA talent building their foundations in a real support ecosystem.',
+'home.community.c6.title1':  'CEOs & Leaders',
+'home.community.c6.desc1':   'Visionaries who drive business growth by championing a culture of quality.'
         // Home — Events
 'home.events.eyebrow':        'Events that connect and transform',
 'home.events.title':          'Spaces to learn from industry leaders',
