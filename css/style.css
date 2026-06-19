@@ -3697,9 +3697,9 @@ body.pg-eventos .page-header::before {
 [data-theme="dark"] .tab-text {
     color: rgba(255, 255, 255, 0.8);
 }
-.hp-community-card--center {
+/*.hp-community-card--center {
     grid-column: 1 / -1;
     justify-self: center;
     width: 100%;
     max-width: calc((100% - 2 * 2rem) / 3);
-}
+}*/
