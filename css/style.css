@@ -3700,5 +3700,6 @@ body.pg-eventos .page-header::before {
 .hp-community-card--center {
     grid-column: 1 / -1;
     justify-self: center;
-    max-width: 360px;
+    width: 100%;
+    max-width: calc((100% - 2 * 2rem) / 3);
 }
