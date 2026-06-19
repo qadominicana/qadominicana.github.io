@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find the Bug — QA Dominicana</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  :root{
+    --qa-navy:#0a2540;
+    --qa-blue:#1565c0;
+    --qa-cyan:#00bcd4;
+    --qa-green:#2ecc71;
+    --qa-red:#e74c3c;
+    --qa-gold:#ffd166;
+    --wine-1:#8a1838;
+    --wine-2:#5a0f23;
+    --wine-3:#3a0815;
+    --glass:rgba(255,255,255,.08);
+    --glass-bd:rgba(255,255,255,.16);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:
+      radial-gradient(1200px 800px at 15% -10%, #a01f40 0%, transparent 55%),
+      radial-gradient(1000px 900px at 110% 120%, #6e1228 0%, transparent 50%),
+      linear-gradient(160deg, var(--wine-1), var(--wine-2) 55%, var(--wine-3));
+    background-attachment:fixed;
+    color:#fff;overflow:hidden;
+  }
+  /* subtle vignette so edges never read as "empty" */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    box-shadow:inset 0 0 240px rgba(0,0,0,.45);
+  }
+
+  .app{
+    position:relative;z-index:1;height:100dvh;width:100%;
+    max-width:1500px;margin:0 auto;padding:clamp(.6rem,1.6vh,1.2rem) clamp(1rem,3vw,2.5rem);
+    display:flex;flex-direction:column;gap:clamp(.5rem,1.3vh,1rem);
+  }
+
+  /* ===== Top bar: brand + hero + lang, all in one row ===== */
+  header.bar{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:.7rem;font-weight:800;letter-spacing:.5px;font-size:1.05rem}
+  .brand .dot{width:15px;height:15px;border-radius:50%;background:var(--qa-green);box-shadow:0 0 14px var(--qa-green)}
+  .brand small{display:block;font-weight:600;color:var(--qa-gold);letter-spacing:2.5px;font-size:.6rem}
+  .title-inline{text-align:center;flex:1;min-width:240px}
+  .title-inline h1{font-weight:900;font-size:clamp(1.4rem,3.4vw,2.6rem);margin:0;line-height:1;
+    text-shadow:0 2px 18px rgba(0,0,0,.35)}
+  .title-inline h1 .accent{color:var(--qa-gold)}
+  .title-inline p{color:rgba(255,255,255,.72);margin:.25rem 0 0;font-size:clamp(.72rem,1.4vw,.95rem)}
+  .lang-btn{background:var(--glass);border:1px solid var(--glass-bd);color:#fff;border-radius:30px;
+    padding:.4rem .9rem;font-size:.82rem;cursor:pointer;backdrop-filter:blur(8px);transition:.15s;white-space:nowrap}
+  .lang-btn:hover{border-color:var(--qa-gold);transform:translateY(-1px)}
+
+  /* ===== Control row: HUD chips + difficulty, side by side ===== */
+  .controlrow{
+    display:flex;align-items:stretch;justify-content:space-between;gap:clamp(.5rem,1.5vw,1rem);flex-wrap:wrap;
+  }
+  .hud{display:flex;gap:.6rem;flex-wrap:wrap;align-items:stretch}
+  .chip{
+    background:var(--glass);border:1px solid var(--glass-bd);
+    border-radius:16px;padding:.45rem 1rem;text-align:center;min-width:92px;backdrop-filter:blur(10px);
+    display:flex;flex-direction:column;justify-content:center;gap:.1rem;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+  }
+  .chip .label{font-size:.58rem;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;font-weight:700}
+  .chip .val{font-size:clamp(1.2rem,2.4vh,1.7rem);font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+  .chip.timer .val{color:#fff}
+  .chip.timer.urgent .val{color:#ff6b6b;animation:pulse .5s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.45}}
+  .chip.score .val{color:var(--qa-green)}
+  .chip.level .val{color:var(--qa-gold)}
+  .chip.level .sub{font-size:.56rem;color:rgba(255,255,255,.65);font-weight:700;letter-spacing:.5px}
+  .chip.best .val{color:var(--qa-cyan)}
+
+  .difficulty{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+  .diff-btn{
+    background:var(--glass);border:1px solid var(--glass-bd);color:rgba(255,255,255,.8);
+    border-radius:14px;padding:.4rem .85rem;font-size:.78rem;font-weight:700;cursor:pointer;
+    transition:all .15s;letter-spacing:.3px;display:flex;flex-direction:column;align-items:center;gap:.05rem;backdrop-filter:blur(8px);
+  }
+  .diff-btn:hover{border-color:var(--qa-gold);color:#fff;transform:translateY(-1px)}
+  .diff-btn.active{background:linear-gradient(135deg,var(--qa-gold),#e6a92e);color:#3a2400;border-color:transparent;box-shadow:0 6px 16px rgba(255,209,102,.3)}
+  .diff-btn .em{font-size:1rem;line-height:1}
+
+  /* ===== Stage: takes all remaining height ===== */
+  .stage{
+    position:relative;border-radius:20px;overflow:hidden;flex:1;min-height:0;width:100%;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 24px 70px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.05);
+    background:#0d1b2a;cursor:crosshair;user-select:none;
+  }
+  .stage svg{display:block;width:100%;height:100%;object-fit:cover}
+  .stage.locked{cursor:not-allowed}
+
+  .ladybug{cursor:pointer;transition:transform .08s}
+  .ladybug:hover{filter:drop-shadow(0 0 4px #fff)}
+
+  .progressbar{position:absolute;top:0;left:0;height:6px;
+    background:linear-gradient(90deg,var(--qa-gold),var(--qa-green));width:100%;z-index:15;transition:width .25s linear;
+    box-shadow:0 0 12px rgba(255,209,102,.5)}
+
+  .overlay{
+    position:absolute;inset:0;display:none;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    background:radial-gradient(circle at center, rgba(40,8,18,.86), rgba(15,5,12,.95));
+    backdrop-filter:blur(6px);z-index:20;padding:1rem;
+  }
+  .overlay.show{display:flex;animation:pop .3s ease}
+  @keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+  .overlay h2{font-size:clamp(2rem,6vw,3.4rem);font-weight:900;margin:0;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+  .overlay.win h2{color:var(--qa-green)}
+  .overlay.lose h2{color:#ff6b6b}
+  .overlay p{color:rgba(255,255,255,.85);font-size:clamp(1rem,2.2vw,1.2rem);margin:.5rem 0 1rem}
+  .overlay .big-time{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--qa-cyan)}
+  .overlay .levelup{font-size:clamp(1rem,2.4vw,1.2rem);color:var(--qa-gold);font-weight:800;margin-top:.3rem}
+
+  /* ===== Bottom action bar ===== */
+  .actionbar{display:flex;gap:.7rem;justify-content:center;align-items:center;flex-wrap:wrap}
+  .controls{display:flex;gap:.7rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+  .btn-qa{
+    background:linear-gradient(135deg,var(--qa-green),#1fa85a);border:none;color:#04210f;
+    font-weight:800;border-radius:30px;padding:.7rem 1.7rem;cursor:pointer;letter-spacing:.5px;
+    box-shadow:0 10px 24px rgba(46,204,113,.4);transition:transform .1s;font-size:.95rem;
+  }
+  .btn-qa:hover{transform:translateY(-2px)}
+  .btn-ghost{background:var(--glass);border:1px solid var(--glass-bd);color:#fff;border-radius:30px;
+    padding:.7rem 1.4rem;cursor:pointer;font-weight:700;backdrop-filter:blur(8px);transition:.15s;font-size:.95rem}
+  .btn-ghost:hover{border-color:var(--qa-gold);transform:translateY(-2px)}
+  .hint{color:rgba(255,255,255,.55);font-size:.8rem;text-align:center;margin:0;flex-basis:100%}
+  .powered{flex-basis:100%;text-align:center;color:rgba(255,255,255,.45);font-size:.72rem;
+    letter-spacing:1px;text-transform:uppercase;margin-top:-.15rem}
+  .powered strong{color:#ff4d4f;letter-spacing:2px;font-weight:800}
+
+  .confetti{position:absolute;inset:0;pointer-events:none;z-index:30;overflow:hidden}
+  .conf{position:absolute;width:10px;height:14px;top:-20px;opacity:.9;animation:fall linear forwards;border-radius:2px}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+  .miss{position:absolute;color:#ff6b6b;font-weight:800;font-size:1.3rem;pointer-events:none;animation:floatup .8s forwards;z-index:25;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+  @keyframes floatup{to{transform:translateY(-44px);opacity:0}}
+
+  @media (max-width:640px){
+    .title-inline p{display:none}
+    .controlrow{justify-content:center}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .conf,.miss,.overlay.show,.chip.timer.urgent .val{animation:none}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="bar">
+    <div class="brand">
+      <span class="dot"></span>
+      <div>QA Dominicana<small>FIND THE BUG</small></div>
+    </div>
+    <div class="title-inline">
+      <h1 data-i18n="title">Encuentra el <span class="accent">Bug</span> 🐞</h1>
+      <p data-i18n="subtitle">Hay un bug escondido entre el caos. Encuéntralo antes de que el tiempo se acabe.</p>
+    </div>
+    <button class="lang-btn" id="langBtn"><i class="fas fa-globe"></i> <span id="langLbl">EN</span></button>
+  </header>
+
+  <div class="controlrow">
+    <div class="hud">
+      <div class="chip timer" id="timerChip"><div class="label" data-i18n="time">Tiempo</div><div class="val" id="timerVal">30</div></div>
+      <div class="chip level"><div class="label" data-i18n="level">Nivel</div><div class="val" id="levelVal">1</div><div class="sub" id="levelName">Fácil</div></div>
+      <div class="chip score"><div class="label" data-i18n="score">Puntaje</div><div class="val" id="scoreVal">0</div></div>
+      <div class="chip best"><div class="label" data-i18n="best">Mejor nivel</div><div class="val" id="bestVal">—</div></div>
+    </div>
+    <div class="difficulty" id="difficulty">
+      <button class="diff-btn active" data-diff="0"><span class="em">🟢</span><span data-i18n="d_easy">Fácil</span></button>
+      <button class="diff-btn" data-diff="1"><span class="em">🔵</span><span data-i18n="d_medium">Medio</span></button>
+      <button class="diff-btn" data-diff="2"><span class="em">🟠</span><span data-i18n="d_hard">Difícil</span></button>
+      <button class="diff-btn" data-diff="3"><span class="em">🔴</span><span data-i18n="d_hell">Infierno</span></button>
+    </div>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="progressbar" id="progressbar"></div>
+    <div class="confetti" id="confetti"></div>
+    <div class="overlay" id="overlay">
+      <h2 id="ovTitle"></h2>
+      <p id="ovMsg"></p>
+      <div class="big-time" id="ovTime"></div>
+      <div class="levelup" id="ovLevel"></div>
+      <div class="controls">
+        <button class="btn-qa" id="playAgain"></button>
+      </div>
+    </div>
+    <!-- SVG playfield injected by JS -->
+  </div>
+
+  <div class="actionbar">
+    <button class="btn-qa" id="startBtn" data-i18n="start"><i class="fas fa-play"></i> Comenzar</button>
+    <button class="btn-ghost" id="resetBtn" data-i18n="reset"><i class="fas fa-rotate-right"></i> Reiniciar</button>
+    <p class="hint" data-i18n="hint">Tip: el bug es rojo con puntos negros. Cada nivel hay más elementos, más señuelos y menos tiempo.</p>
+    <div class="powered"><span data-i18n="poweredBy">Powered by</span> <strong>HUAWEI</strong></div>
+  </div>
+</div>
+
+<script>
+/* ---------- i18n ---------- */
+const I18N = {
+  es:{ title:'Encuentra el <span class="accent">Bug</span> 🐞', subtitle:'Hay un bug escondido entre el caos. Encuéntralo antes de que el tiempo se acabe.',
+    time:'Tiempo', score:'Puntaje', best:'Mejor nivel', level:'Nivel', start:'<i class="fas fa-play"></i> Comenzar', reset:'<i class="fas fa-rotate-right"></i> Reiniciar',
+    hint:'Tip: el bug es rojo con puntos negros. Cada nivel hay más elementos, más señuelos y menos tiempo.', footer:'Hecho para la comunidad SQA',
+    d_easy:'Fácil', d_medium:'Medio', d_hard:'Difícil', d_hell:'Infierno',
+    win:'¡Bug encontrado!', winMsg:'Excelente ojo de tester.', lose:'¡Se acabó el tiempo!', loseMsg:'El bug llegó a producción 😅',
+    playAgain:'Siguiente nivel', retry:'Reintentar', yourTime:'Lo encontraste en', sec:'s',
+    levelUp:'⬆ ¡Subes a nivel ', reached:'Llegaste al nivel ', poweredBy:'Powered by',
+    diffNames:['Fácil','Medio','Difícil','Infierno'] },
+  en:{ title:'Find the <span class="accent">Bug</span> 🐞', subtitle:'A bug is hidden in the chaos. Spot it before the clock runs out.',
+    time:'Time', score:'Score', best:'Best level', level:'Level', start:'<i class="fas fa-play"></i> Start', reset:'<i class="fas fa-rotate-right"></i> Reset',
+    hint:'Tip: the bug is red with black dots. Each level adds more elements, more decoys and less time.', footer:'Built for the SQA community',
+    d_easy:'Easy', d_medium:'Medium', d_hard:'Hard', d_hell:'Hell',
+    win:'Bug found!', winMsg:'Sharp tester eye.', lose:"Time's up!", loseMsg:'The bug reached production 😅',
+    playAgain:'Next level', retry:'Retry', yourTime:'Found it in', sec:'s',
+    levelUp:'⬆ Level up to ', reached:'You reached level ', poweredBy:'Powered by',
+    diffNames:['Easy','Medium','Hard','Hell'] }
+};
+let lang = 'es';
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.innerHTML = I18N[lang][el.dataset.i18n]; });
+  document.getElementById('langLbl').textContent = lang==='es'?'EN':'ES';
+  document.documentElement.lang = lang;
+  updateLevelName();
+}
+document.getElementById('langBtn').onclick = ()=>{ lang = lang==='es'?'en':'es'; applyLang(); };
+
+/* ---------- Difficulty model ----------
+   level 1..n. Higher level => more icons, smaller bug, more red decoys, less time.
+   Starting difficulty sets the BASE level offset. */
+const DIFF_BASE = [1, 4, 7, 11];        // starting level per difficulty button
+const DIFF_LABEL_IDX = [0,1,2,3];
+let startDiff = 0;                        // index into DIFF_BASE
+let level = DIFF_BASE[startDiff];
+
+function paramsForLevel(L){
+  // icons grow, time shrinks, bug shrinks, decoys grow — all clamped
+  const iconCount = Math.min(110 + (L-1)*22, 420);
+  const time      = Math.max(30 - (L-1)*2, 8);
+  const bugScale  = Math.max(1.25 - (L-1)*0.07, 0.5); // multiplier on base 30px bug
+  const redRatio  = Math.min(0.10 + (L-1)*0.03, 0.45); // share of icons that are red decoys
+  return { iconCount, time, bugScale, redRatio };
+}
+
+/* ---------- Playfield generation ---------- */
+const stage = document.getElementById('stage');
+const COLORS = ['#1565c0','#00bcd4','#9c27b0','#ff9800','#3f51b5','#009688','#607d8b','#5e35b1','#0277bd','#43a047','#7e57c2','#26a69a'];
+const RED_COLORS = ['#e53935','#d32f2f','#ef5350','#c62828','#f4511e'];
+
+/* Self-contained SVG icons (24x24 viewBox). Each is a function(color)->markup.
+   These do NOT depend on any web font, so the scene always renders fully. */
+const ICON_SET = [
+  // gear
+  c=>`<path fill="${c}" d="M12 8a4 4 0 100 8 4 4 0 000-8zm9 4l2-1.5-2-3.5-2.5 1a7 7 0 00-1.5-.9L16.5 4h-4l-.5 2.6c-.5.2-1 .5-1.5.9l-2.5-1-2 3.5L4.5 12 2.5 13.5l2 3.5 2.5-1c.5.4 1 .6 1.5.9l.5 2.6h4l.5-2.6c.5-.2 1-.5 1.5-.9l2.5 1 2-3.5L21 12z"/>`,
+  // database
+  c=>`<g fill="${c}"><ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5c0 1.4-3.1 2.5-7 2.5S5 6.4 5 5z"/><path d="M5 11v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6c0 1.4-3.1 2.5-7 2.5S5 12.4 5 11z"/></g>`,
+  // code file </>
+  c=>`<g fill="${c}"><path d="M6 2h8l4 4v16H6z" opacity=".5"/><path d="M9 11l-2 2 2 2 1-1-1-1 1-1zm6 0l-1 1 1 1-1 1 1 1 2-2z"/></g>`,
+  // terminal
+  c=>`<g fill="${c}"><rect x="2" y="4" width="20" height="16" rx="2"/><path fill="#0d1b2a" d="M5 8l3 3-3 3 1 1 4-4-4-4zm6 6h6v1.5h-6z"/></g>`,
+  // shield check
+  c=>`<path fill="${c}" d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3zm-1 13l5-5-1.4-1.4L11 12.2 9.4 10.6 8 12z"/>`,
+  // microchip
+  c=>`<g fill="${c}"><rect x="6" y="6" width="12" height="12" rx="1.5"/><g><rect x="9" y="2" width="1.5" height="3"/><rect x="13.5" y="2" width="1.5" height="3"/><rect x="9" y="19" width="1.5" height="3"/><rect x="13.5" y="19" width="1.5" height="3"/><rect x="2" y="9" width="3" height="1.5"/><rect x="2" y="13.5" width="3" height="1.5"/><rect x="19" y="9" width="3" height="1.5"/><rect x="19" y="13.5" width="3" height="1.5"/></g></g>`,
+  // check circle
+  c=>`<g fill="${c}"><circle cx="12" cy="12" r="10"/><path fill="#0d1b2a" d="M10.5 15.2l-3-3L9 10.7l1.5 1.5L15 7.7l1.5 1.5z"/></g>`,
+  // wrench
+  c=>`<path fill="${c}" d="M21 6a5 5 0 01-6.7 4.7l-7 7-2.8-2.8 7-7A5 5 0 0118 4l-2.5 2.5 1.5 1.5L19.5 5.5c.3.2.5.3.5.5z"/>`,
+  // sitemap / nodes
+  c=>`<g fill="${c}"><rect x="9.5" y="2" width="5" height="4" rx="1"/><rect x="3" y="18" width="5" height="4" rx="1"/><rect x="9.5" y="18" width="5" height="4" rx="1"/><rect x="16" y="18" width="5" height="4" rx="1"/><path stroke="${c}" stroke-width="1.5" fill="none" d="M12 6v6M12 12H5.5v6M12 12h6.5v6M12 12v6"/></g>`,
+  // bracket braces { }
+  c=>`<g fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round"><path d="M8 3c-2 0-2 3-2 4.5S5 9 4 9c1 0 2 0 2 1.5S6 18 8 18"/><path d="M16 3c2 0 2 3 2 4.5S19 9 20 9c-1 0-2 0-2 1.5s0 6.5-2 6.5"/></g>`,
+  // server stack
+  c=>`<g fill="${c}"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="13" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1.2" fill="#0d1b2a"/><circle cx="7" cy="16" r="1.2" fill="#0d1b2a"/></g>`,
+  // clipboard check (QA)
+  c=>`<g fill="${c}"><rect x="5" y="4" width="14" height="18" rx="2"/><rect x="9" y="2" width="6" height="3.5" rx="1" fill="${c}"/><path fill="#0d1b2a" d="M10.5 16l-2-2L7 15.5 10.5 19 17 12.5 15.5 11z"/></g>`
+];
+
+/* Red "bug-ish" decoy icons — close enough to confuse with the ladybug */
+const RED_SET = [
+  // bug
+  c=>`<g fill="${c}"><ellipse cx="12" cy="13" rx="5" ry="6"/><circle cx="12" cy="6" r="3"/><path stroke="${c}" stroke-width="1.6" d="M7 10L3 8M7 13H2M7 16l-4 2M17 10l4-2M17 13h5M17 16l4 2"/><path stroke="#0d1b2a" stroke-width="1" d="M12 8v10"/></g>`,
+  // spider
+  c=>`<g fill="${c}" stroke="${c}" stroke-width="1.4"><circle cx="12" cy="12" r="4" stroke="none"/><path d="M8 12L2 9M8 13l-5 3M8 11l-5-3M8 14l-6 4M16 12l6-3M16 13l5 3M16 11l5-3M16 14l6 4"/></g>`,
+  // warning triangle
+  c=>`<g fill="${c}"><path d="M12 3l10 18H2z"/><rect x="11" y="9" width="2" height="6" fill="#0d1b2a"/><rect x="11" y="16.5" width="2" height="2" fill="#0d1b2a"/></g>`,
+  // exclamation circle
+  c=>`<g fill="${c}"><circle cx="12" cy="12" r="10"/><rect x="11" y="6" width="2" height="8" fill="#0d1b2a"/><rect x="11" y="15.5" width="2" height="2" fill="#0d1b2a"/></g>`,
+  // bug variant (rounded)
+  c=>`<g fill="${c}"><rect x="7" y="8" width="10" height="11" rx="5"/><circle cx="12" cy="5" r="2.5"/><path stroke="${c}" stroke-width="1.5" d="M7 11H3M7 14H2.5M7 17l-4 2M17 11h4M17 14h4.5M17 17l4 2"/></g>`
+];
+
+function rand(a,b){return a+Math.random()*(b-a)}
+function buildField(L){
+  const p = paramsForLevel(L);
+  const W=1600,H=900;
+  let parts=[`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">`];
+  parts.push(`<rect width="${W}" height="${H}" fill="#0d1b2a"/>`);
+  const reds = Math.floor(p.iconCount * p.redRatio);
+  for(let i=0;i<p.iconCount;i++){
+    const x=rand(8,W-40),y=rand(8,H-40),s=rand(22,46);
+    const rot=rand(-22,22).toFixed(0);
+    const isRed = i < reds;
+    const c = isRed ? RED_COLORS[i%RED_COLORS.length] : COLORS[i%COLORS.length];
+    const icon = isRed ? RED_SET[i%RED_SET.length](c) : ICON_SET[i%ICON_SET.length](c);
+    const sc=(s/24).toFixed(3);
+    parts.push(`<g opacity="0.9" transform="translate(${x.toFixed(0)} ${y.toFixed(0)}) rotate(${rot} ${(s/2).toFixed(0)} ${(s/2).toFixed(0)}) scale(${sc})">${icon}</g>`);
+  }
+  // ladybug (the target)
+  const bs = rand(24,32) * p.bugScale;
+  const bx=rand(80,W-80),by=rand(80,H-80);
+  parts.push(`<g class="ladybug" id="bug" transform="translate(${bx.toFixed(0)} ${by.toFixed(0)}) scale(${(bs/30).toFixed(2)})">`);
+  parts.push(`<ellipse cx="0" cy="0" rx="18" ry="22" fill="#e53935"/>`);
+  parts.push(`<rect x="-1.5" y="-22" width="3" height="44" fill="#1a1a1a"/>`);
+  parts.push(`<circle cx="0" cy="-20" r="8" fill="#1a1a1a"/>`);
+  parts.push(`<circle cx="-6" cy="2" r="3" fill="#1a1a1a"/><circle cx="6" cy="2" r="3" fill="#1a1a1a"/>`);
+  parts.push(`<circle cx="-7" cy="-9" r="2.5" fill="#1a1a1a"/><circle cx="7" cy="-9" r="2.5" fill="#1a1a1a"/>`);
+  parts.push(`<circle cx="-5" cy="11" r="2.5" fill="#1a1a1a"/><circle cx="5" cy="11" r="2.5" fill="#1a1a1a"/>`);
+  parts.push(`</g></svg>`);
+  return parts.join('');
+}
+
+/* ---------- Game logic ---------- */
+let TOTAL=30, timeLeft=TOTAL, score=0, timer=null, running=false;
+let best=null; try{ best=localStorage.getItem('qa_ftb_bestlvl'); }catch(e){}
+const timerVal=document.getElementById('timerVal'), scoreVal=document.getElementById('scoreVal'),
+      bestVal=document.getElementById('bestVal'), levelVal=document.getElementById('levelVal'),
+      levelName=document.getElementById('levelName'), progressbar=document.getElementById('progressbar'),
+      timerChip=document.getElementById('timerChip');
+const overlay=document.getElementById('overlay'), ovTitle=document.getElementById('ovTitle'),
+      ovMsg=document.getElementById('ovMsg'), ovTime=document.getElementById('ovTime'),
+      ovLevel=document.getElementById('ovLevel'), playAgain=document.getElementById('playAgain');
+if(best) bestVal.textContent = best;
+
+function updateLevelName(){
+  // show difficulty tier name based on current level thresholds
+  let tier=0;
+  for(let i=DIFF_BASE.length-1;i>=0;i--){ if(level>=DIFF_BASE[i]){ tier=i; break; } }
+  levelName.textContent = I18N[lang].diffNames[tier];
+}
+function setLevel(L){ level=L; levelVal.textContent=L; updateLevelName(); }
+
+/* difficulty buttons */
+document.querySelectorAll('.diff-btn').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('.diff-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    startDiff = parseInt(b.dataset.diff,10);
+    stop();
+    setLevel(DIFF_BASE[startDiff]);
+    overlay.className='overlay';
+    const p=paramsForLevel(level);
+    timeLeft=p.time; timerVal.textContent=p.time; progressbar.style.width='100%';
+    newRound();
+  };
+});
+
+function beep(freq,dur,type){
+  try{
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.type=type||'sine';o.frequency.value=freq;o.connect(g);g.connect(ctx.destination);
+    g.gain.setValueAtTime(.25,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);
+    o.start();o.stop(ctx.currentTime+dur);
+  }catch(e){}
+}
+function winSound(){ beep(660,.12,'square'); setTimeout(()=>beep(880,.18,'square'),120); setTimeout(()=>beep(1040,.18,'square'),260); }
+
+function confettiBurst(){
+  const c=document.getElementById('confetti'); c.innerHTML='';
+  const cols=['#2ecc71','#00bcd4','#1565c0','#ffd166','#e74c3c'];
+  for(let i=0;i<90;i++){
+    const d=document.createElement('div');d.className='conf';
+    d.style.left=Math.random()*100+'%';
+    d.style.background=cols[i%cols.length];
+    d.style.animationDuration=(1.5+Math.random()*1.5)+'s';
+    d.style.animationDelay=(Math.random()*.4)+'s';
+    c.appendChild(d);
+  }
+  setTimeout(()=>c.innerHTML='',3500);
+}
+
+function newRound(){
+  overlay.className='overlay';
+  stage.classList.remove('locked');
+  [...stage.querySelectorAll('svg')].forEach(s=>s.remove());
+  stage.insertAdjacentHTML('beforeend', buildField(level));
+  bindBug(); bindMiss();
+}
+function bindBug(){
+  const bug=document.getElementById('bug');
+  if(bug) bug.addEventListener('click',(e)=>{ e.stopPropagation(); if(running) win(); });
+}
+function bindMiss(){
+  const svg=stage.querySelector('svg');
+  if(svg) svg.addEventListener('click',(e)=>{
+    if(!running) return;
+    score=Math.max(0,score-1); scoreVal.textContent=score;
+    beep(160,.1,'sawtooth');
+    const r=stage.getBoundingClientRect();
+    const m=document.createElement('div');m.className='miss';m.textContent='-1';
+    m.style.left=(e.clientX-r.left)+'px';m.style.top=(e.clientY-r.top)+'px';
+    stage.appendChild(m); setTimeout(()=>m.remove(),800);
+  });
+}
+
+function start(){
+  if(running) return;
+  const p=paramsForLevel(level);
+  timeLeft=p.time; timerVal.textContent=p.time; progressbar.style.width='100%';
+  running=true; newRound();
+  timer=setInterval(()=>{
+    timeLeft--; timerVal.textContent=timeLeft;
+    const pp=paramsForLevel(level);
+    progressbar.style.width=Math.max(0,(timeLeft/pp.time)*100)+'%';
+    if(timeLeft<=5 && timeLeft>0){ beep(440,.05,'sine'); timerChip.classList.add('urgent'); }
+    if(timeLeft<=0) lose();
+  },1000);
+}
+function stop(){ running=false; clearInterval(timer); timerChip.classList.remove('urgent'); }
+
+function win(){
+  stop();
+  const p=paramsForLevel(level);
+  const used=p.time-timeLeft;
+  // score: base for the level + speed bonus
+  score += level*10 + timeLeft*3;
+  scoreVal.textContent=score;
+  // best level
+  if(best===null || level>parseInt(best,10)){ best=String(level); bestVal.textContent=best; try{localStorage.setItem('qa_ftb_bestlvl',best);}catch(e){} }
+  winSound(); confettiBurst();
+  overlay.className='overlay win show';
+  ovTitle.textContent=I18N[lang].win;
+  ovMsg.textContent=I18N[lang].winMsg;
+  ovTime.textContent=I18N[lang].yourTime+' '+used+I18N[lang].sec;
+  ovLevel.textContent=I18N[lang].levelUp+(level+1);
+  playAgain.innerHTML='<i class="fas fa-arrow-up"></i> '+I18N[lang].playAgain;
+  playAgain.dataset.mode='next';
+  stage.classList.add('locked');
+}
+function lose(){
+  stop(); beep(120,.4,'sawtooth');
+  overlay.className='overlay lose show';
+  ovTitle.textContent=I18N[lang].lose;
+  ovMsg.textContent=I18N[lang].loseMsg;
+  ovTime.textContent='';
+  ovLevel.textContent=I18N[lang].reached+level;
+  playAgain.innerHTML='<i class="fas fa-rotate-right"></i> '+I18N[lang].retry;
+  playAgain.dataset.mode='retry';
+  stage.classList.add('locked');
+}
+
+document.getElementById('startBtn').onclick=start;
+document.getElementById('resetBtn').onclick=()=>{
+  stop(); setLevel(DIFF_BASE[startDiff]); score=0; scoreVal.textContent=0;
+  overlay.className='overlay';
+  const p=paramsForLevel(level); timeLeft=p.time; timerVal.textContent=p.time; progressbar.style.width='100%';
+  newRound();
+};
+playAgain.onclick=()=>{
+  overlay.className='overlay';
+  if(playAgain.dataset.mode==='next'){ setLevel(level+1); }   // harder each time
+  start();
+};
+
+setLevel(DIFF_BASE[startDiff]);
+applyLang();
+newRound();
+</script>
+</body>
+</html>
